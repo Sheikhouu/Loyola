@@ -1,0 +1,42 @@
+Create a modern, responsive political campaign website for {Alexandre Teodoresco}
+Position: City Councillor candidate in {DISTRICT}, Montreal
+Party: Ensemble Montréal
+LinkedIn: {linkedin.com/in/alexandreteo}
+
+Color Palette:
+- Primary Dark Blue: {PRIMARY_BLUE}    // e.g. #002E5D
+- Secondary Light Blue: {SECONDARY_BLUE}    // e.g. #0090D1
+- Light Grey Background: {BG_GREY}    // e.g. #F7F7F7
+- Text Black: {TEXT_BLACK}    // e.g. #1C1C1C
+
+Site Structure:
+1. Sticky Header: logo text “{CANDIDATE_NAME} – Ensemble Montréal”; Menu: About • Priorities • Endorsements • Media • Volunteer • Donate
+2. Hero Section: centered headline “{HERO_HEADLINE}”; buttons: “{CTA_PRIMARY}” / “{CTA_SECONDARY}”
+3. About Section:
+   - Title: “Meet {CANDIDATE_NAME}”
+   - Portrait photo + biography text
+4. Priorities Section:
+   - Title: “Our Priorities for {DISTRICT}”
+   - {NUM_PRIORITIES} blocks (title + short description each)
+5. Endorsements Section:
+   - Title: “Endorsements”
+   - List of supporter names in **bold** + role/affiliation
+6. Media Section:
+   - Title: “In the News”
+   - List: article title + excerpt + “Read More” link
+7. Volunteer Section:
+   - Title: “Get Involved”
+   - CTA + signup form or external form link
+8. Footer:
+   - Contact info, social icons (LinkedIn, Facebook, Instagram, X), legal/privacy links
+
+Design & Layout:
+- Fonts: headings (Montserrat or Poppins), body (Open Sans)
+- UI elements: rounded buttons, smooth hover, alternate section backgrounds
+- Mobile-first responsive: hamburger nav, buttons full-width, adaptive text
+- Smooth scroll, basic SEO metadata (include “{DISTRICT}, Montreal”), WCAG contrast and semantics.
+
+Deliverable:
+- Fully built site scaffold in Bolt.new with placeholders
+- Replaceable text/photo assets and working navigation with anchor links
+- Production-ready responsive layout and styling
