@@ -39,7 +39,7 @@ const Header = () => {
               className="text-2xl md:text-3xl font-bold text-[#292B87] hover:text-[#0090D1] transition-colors duration-200" 
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
-              Alexandre Teo
+              Alexandre Teodoresco
             </button>
             <span className="text-[#0090D1] font-medium ml-3 hidden sm:inline text-lg">
               – Ensemble Montréal
@@ -53,7 +53,7 @@ const Header = () => {
                 { key: 'about', section: 'about' },
                 { key: 'platform', section: 'platform' },
                 { key: 'endorsements', section: 'endorsements' },
-                { key: 'media', section: 'media' },
+                { key: 'press', section: 'press' },
                 { key: 'volunteer', section: 'volunteer' }
               ].map((item) => (
                 <button
@@ -101,7 +101,7 @@ const Header = () => {
                 { key: 'about', section: 'about' },
                 { key: 'platform', section: 'platform' },
                 { key: 'endorsements', section: 'endorsements' },
-                { key: 'media', section: 'media' },
+                { key: 'press', section: 'press' },
                 { key: 'volunteer', section: 'volunteer' },
                 { key: 'donate', section: 'donate' }
               ].map((item) => (

@@ -4,7 +4,7 @@ export const translations = {
     about: 'À propos',
     platform: 'Plateforme',
     endorsements: 'Soutiens',
-    media: 'Médias',
+    press: 'Presse',
     volunteer: 'Bénévolat',
     donate: 'Faire un don',
     
@@ -44,8 +44,8 @@ export const translations = {
     endorsementQuote: '"Alexandre apporte des idées fraîches et un engagement authentique à notre communauté. Son expérience en urbanisme et sa compréhension profonde des enjeux locaux en font le bon choix pour Loyola."',
     endorsementSource: '- Coalition des groupes communautaires de Loyola',
     
-    // Media
-    mediaTitle: 'Dans les médias',
+    // Press
+    pressTitle: 'Dans les médias',
     readMore: 'Lire plus',
     
     // Volunteer
@@ -80,7 +80,7 @@ export const translations = {
     about: 'About',
     platform: 'Platform',
     endorsements: 'Endorsements',
-    media: 'Media',
+    press: 'Press',
     volunteer: 'Volunteer',
     donate: 'Donate',
     
@@ -120,8 +120,8 @@ export const translations = {
     endorsementQuote: '"Alexandre brings fresh ideas and genuine commitment to our community. His experience in urban planning and his deep understanding of local issues make him the right choice for Loyola."',
     endorsementSource: '- Coalition of Loyola Community Groups',
     
-    // Media
-    mediaTitle: 'In the News',
+    // Press
+    pressTitle: 'In the News',
     readMore: 'Read More',
     
     // Volunteer

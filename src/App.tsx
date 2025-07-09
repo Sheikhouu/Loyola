@@ -5,7 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Priorities from './components/Priorities';
 import Endorsements from './components/Endorsements';
-import Media from './components/Media';
+import Press from './components/Media';
 import Volunteer from './components/Volunteer';
 import Footer from './components/Footer';
 
@@ -24,7 +24,7 @@ function App() {
       <About />
       <Priorities />
       <Endorsements />
-      <Media />
+      <Press />
       <Volunteer />
       <Footer />
     </div>

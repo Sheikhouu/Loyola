@@ -1,10 +1,11 @@
-import React from 'react';
-import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin, Heart, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin, Heart, ArrowRight, Send } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 import { t } from '../translations';
 
 const Footer = () => {
   const { language } = useLanguage();
+  const [email, setEmail] = useState('');
   
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -12,9 +13,61 @@ const Footer = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle newsletter subscription
+    console.log('Newsletter subscription:', email);
+    setEmail('');
+    // You would implement actual newsletter subscription logic here
+  };
   
   return (
     <footer className="bg-[#292B87] text-white">
+      {/* Newsletter Section */}
+      <section className="py-16 bg-gradient-to-r from-[#292B87] to-[#0090D1]">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              {language === 'fr' ? 'Restez informé' : 'Stay Informed'}
+            </h2>
+            <p className="text-xl mb-8 opacity-90" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+              {language === 'fr' 
+                ? 'Recevez les dernières nouvelles de notre campagne et les mises à jour importantes pour Loyola.'
+                : 'Receive the latest news from our campaign and important updates for Loyola.'
+              }
+            </p>
+            
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder={language === 'fr' ? 'Votre adresse courriel' : 'Your email address'}
+                className="flex-1 px-6 py-4 rounded-full text-[#292B87] placeholder-gray-500 text-lg"
+                style={{ fontFamily: 'Open Sans, sans-serif' }}
+                required
+              />
+              <button
+                type="submit"
+                className="group inline-flex items-center bg-white text-[#292B87] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+                style={{ fontFamily: 'Open Sans, sans-serif' }}
+              >
+                {language === 'fr' ? 'S\'abonner' : 'Subscribe'}
+                <Send className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" />
+              </button>
+            </form>
+            
+            <p className="text-sm mt-4 opacity-75" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+              {language === 'fr' 
+                ? 'Nous respectons votre vie privée. Vous pouvez vous désabonner à tout moment.'
+                : 'We respect your privacy. You can unsubscribe at any time.'
+              }
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Donate Section */}
       <section id="donate" className="py-24">
         <div className="container mx-auto px-4">
@@ -29,7 +82,7 @@ const Footer = () => {
             
             {/* Donation Options */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
+              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
                 <div className="text-3xl font-bold text-[#0090D1] mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   $25
                 </div>
@@ -37,15 +90,20 @@ const Footer = () => {
                   {language === 'fr' ? 'Soutien de base' : 'Basic support'}
                 </p>
               </div>
-              <div className="bg-white/20 backdrop-blur-sm p-8 rounded-2xl border-2 border-[#0090D1]">
+              <div className="bg-white/20 backdrop-blur-sm p-8 rounded-2xl border-2 border-[#0090D1] transform scale-105">
                 <div className="text-3xl font-bold text-[#0090D1] mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   $100
                 </div>
                 <p className="text-white/80" style={{ fontFamily: 'Open Sans, sans-serif' }}>
                   {language === 'fr' ? 'Soutien recommandé' : 'Recommended support'}
                 </p>
+                <div className="mt-2">
+                  <span className="inline-block bg-[#0090D1] text-white px-3 py-1 rounded-full text-sm font-bold">
+                    {language === 'fr' ? 'Populaire' : 'Popular'}
+                  </span>
+                </div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
+              <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20">
                 <div className="text-3xl font-bold text-[#0090D1] mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   $250
                 </div>
@@ -71,10 +129,10 @@ const Footer = () => {
               {/* Brand */}
               <div className="md:col-span-2">
                 <h3 className="text-3xl font-bold mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  Alexandre Teo
+                  Alexandre Teodoresco
                 </h3>
                 <p className="text-[#0090D1] font-medium mb-6 text-lg">
-                  Ensemble Montréal – {language === 'fr' ? 'Conseiller municipal Loyola' : 'Loyola City Councillor'}
+                  Ensemble Montréal – {language === 'fr' ? 'Candidat conseiller municipal Loyola' : 'Loyola City Council Candidate'}
                 </p>
                 <p className="text-white/80 mb-8 leading-relaxed max-w-md" style={{ fontFamily: 'Open Sans, sans-serif' }}>
                   {language === 'fr' 
@@ -110,7 +168,7 @@ const Footer = () => {
                     { key: 'about', section: 'about' },
                     { key: 'platform', section: 'platform' },
                     { key: 'endorsements', section: 'endorsements' },
-                    { key: 'media', section: 'media' },
+                    { key: 'press', section: 'press' },
                     { key: 'volunteer', section: 'volunteer' }
                   ].map((item) => (
                     <button
