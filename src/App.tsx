@@ -2,11 +2,7 @@ import React from 'react';
 import { useLanguage } from './hooks/useLanguage';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import About from './components/About';
-import Priorities from './components/Priorities';
-import Endorsements from './components/Endorsements';
-import Media from './components/Media';
-import Volunteer from './components/Volunteer';
+import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 
 function App() {
@@ -18,14 +14,10 @@ function App() {
   }, [language]);
   
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white flex flex-col">
       <Header />
       <Hero />
-      <About />
-      <Priorities />
-      <Endorsements />
-      <Media />
-      <Volunteer />
+      <MainContent />
       <Footer />
     </div>
   );
