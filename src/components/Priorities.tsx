@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bus, Shield, Trees, Heart, Home, Briefcase, Settings, Users } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
+import { useLanguage } from '../hooks/useLanguage.tsx';
 import { t } from '../translations';
 
 const Priorities = () => {

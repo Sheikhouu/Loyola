@@ -1,6 +1,6 @@
 import React from 'react';
 import { ExternalLink, Calendar, Eye } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
+import { useLanguage } from '../hooks/useLanguage.tsx';
 import { t } from '../translations';
 
 const Media = () => {

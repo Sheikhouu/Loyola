@@ -1,6 +1,6 @@
 import React from 'react';
 import { Quote, Star } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
+import { useLanguage } from '../hooks/useLanguage.tsx';
 import { t } from '../translations';
 
 const Endorsements = () => {

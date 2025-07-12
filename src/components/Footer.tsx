@@ -1,6 +1,6 @@
 import React from 'react';
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin, Heart, ArrowRight } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
+import { useLanguage } from '../hooks/useLanguage.tsx';
 import { t } from '../translations';
 
 const Footer = () => {

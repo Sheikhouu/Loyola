@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLanguage } from './hooks/useLanguage';
+import { useLanguage } from './hooks/useLanguage.tsx';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
