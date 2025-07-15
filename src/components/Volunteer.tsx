@@ -121,7 +121,11 @@ const Volunteer = () => {
                 : 'Join our team of passionate volunteers and help us build a better Loyola for everyone.'
               }
             </p>
-            <button className="group bg-[#0090D1] text-white px-12 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-[#292B87] transition-all duration-300 transform hover:scale-105 shadow-lg mb-8" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+            <button 
+              onClick={() => window.open('https://monelection.org/form/member/EcTkQougzqf4T32A9Km25W4zCV2aAz', '_blank')}
+              className="group bg-[#0090D1] text-white px-12 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-[#292B87] transition-all duration-300 transform hover:scale-105 shadow-lg mb-8" 
+              style={{ fontFamily: 'Open Sans, sans-serif' }}
+            >
               {t('signUpVolunteer', language)}
               <ArrowRight className="inline-block ml-3 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" />
             </button>

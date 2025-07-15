@@ -70,7 +70,7 @@ const Header = () => {
             
             {/* Donate Button */}
             <button
-              onClick={() => scrollToSection('donate')}
+              onClick={() => window.open('https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708', '_blank')}
               className="hidden md:block bg-[#0090D1] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#292B87] transition-all duration-300 transform hover:scale-105"
               style={{ fontFamily: 'Open Sans, sans-serif' }}
             >
@@ -102,8 +102,7 @@ const Header = () => {
                 { key: 'platform', section: 'platform' },
                 { key: 'endorsements', section: 'endorsements' },
                 { key: 'media', section: 'media' },
-                { key: 'volunteer', section: 'volunteer' },
-                { key: 'donate', section: 'donate' }
+                { key: 'volunteer', section: 'volunteer' }
               ].map((item) => (
                 <button
                   key={item.key}
@@ -114,6 +113,13 @@ const Header = () => {
                   {t(item.key as any, language)}
                 </button>
               ))}
+              <button
+                onClick={() => window.open('https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708', '_blank')}
+                className="text-left text-[#1C1C1C] hover:text-[#0090D1] transition-colors duration-200 font-medium text-lg"
+                style={{ fontFamily: 'Open Sans, sans-serif' }}
+              >
+                {t('donate', language)}
+              </button>
             </nav>
             <div className="mt-6 pt-6 border-t border-gray-200">
               <LanguageSwitcher />

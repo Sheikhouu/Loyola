@@ -60,7 +60,7 @@ const Hero = () => {
                   <ArrowRight className="ml-3 w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
                 <button
-                  onClick={() => scrollToSection('volunteer')}
+                  onClick={() => window.open('https://monelection.org/form/member/EcTkQougzqf4T32A9Km25W4zCV2aAz', '_blank')}
                   className="inline-flex items-center border-2 border-[#292B87] text-[#292B87] px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#292B87] hover:text-white transition-all duration-300"
                   style={{ fontFamily: 'Open Sans, sans-serif' }}
                 >

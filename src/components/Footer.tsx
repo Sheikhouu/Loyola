@@ -55,7 +55,11 @@ const Footer = () => {
               </div>
             </div>
             
-            <button className="group bg-[#0090D1] text-white px-12 py-4 rounded-full font-semibold text-xl hover:bg-white hover:text-[#292B87] transition-all duration-300 transform hover:scale-105 shadow-2xl" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+            <button 
+              onClick={() => window.open('https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708', '_blank')}
+              className="group bg-[#0090D1] text-white px-12 py-4 rounded-full font-semibold text-xl hover:bg-white hover:text-[#292B87] transition-all duration-300 transform hover:scale-105 shadow-2xl" 
+              style={{ fontFamily: 'Open Sans, sans-serif' }}
+            >
               {t('donateNow', language)}
               <ArrowRight className="inline-block ml-3 w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-200" />
             </button>
