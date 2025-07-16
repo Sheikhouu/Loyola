@@ -9,7 +9,7 @@ const Hero = () => {
   const heroSvg = language === 'fr' ? '/svg_s/svg_fr.svg' : '/svg_s/svg_en.svg';
 
   return (
-    <section className="relative h-[70vh] sm:h-[80vh] md:h-[90vh] lg:min-h-screen flex items-center justify-center bg-white overflow-hidden">
+    <section className="relative h-[50vh] xs:h-[55vh] sm:h-[65vh] md:h-[75vh] lg:h-[85vh] xl:min-h-screen flex items-center justify-center bg-white overflow-hidden">
       {/* Image de fond responsive */}
       <div className="absolute inset-0 w-full h-full">
         <img 
