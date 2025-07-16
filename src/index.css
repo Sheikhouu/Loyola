@@ -245,6 +245,37 @@ a:focus-visible {
 }
 
 /* Améliorations spécifiques pour la section Hero */
+
+/* Optimisation de la visibilité sur mobile */
+@media (max-width: 640px) {
+  .hero-mobile-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.1) 30%,
+      rgba(0, 0, 0, 0.1) 70%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+  }
+  
+  /* Améliorer le contraste des éléments sur l'image */
+  .hero-element-mobile {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Assurer la visibilité du bouton sur mobile */
+  .hero-donate-button-mobile {
+    background: rgba(41, 43, 135, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .hero-donate-button-mobile:hover {
+    background: rgba(0, 144, 209, 0.95) !important;
+  }
+}
+
 @media (max-width: 475px) {
   /* Très petits écrans - optimisation extrême */
   .hero-content {

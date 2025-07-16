@@ -18,40 +18,8 @@ const Hero = () => {
           className="w-full h-full object-cover object-center"
         />
         
-        {/* SVG Logo - Responsive positioning */}
-        <div className="absolute top-4 sm:top-6 md:top-8 lg:top-12 left-1/2 transform -translate-x-1/2 z-20 px-4">
-          <img 
-            src={heroSvg}
-            alt={language === 'fr' ? 'Logo Français' : 'English Logo'}
-            className="h-10 xs:h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 w-auto max-w-[90vw] object-contain"
-          />
-        </div>
-        
-        {/* Bouton "Faire un don" - Responsive positioning */}
-        <div className="absolute bottom-4 xs:bottom-6 sm:bottom-8 md:bottom-12 lg:bottom-16 left-4 xs:left-6 sm:left-8 md:left-12 lg:left-16 z-20">
-          <button 
-            className="bg-[#292B87] hover:bg-[#0090D1] text-white 
-                       px-3 py-2 xs:px-4 xs:py-2.5 sm:px-6 sm:py-3 md:px-8 md:py-4 lg:px-10 lg:py-5
-                       rounded-lg sm:rounded-xl md:rounded-2xl 
-                       font-semibold 
-                       text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl
-                       transition-all duration-300 
-                       shadow-lg hover:shadow-xl 
-                       transform hover:scale-105 active:scale-95
-                       min-h-[44px] sm:min-h-[48px] md:min-h-[52px]
-                       flex items-center justify-center
-                       backdrop-blur-sm bg-[#292B87]/90 hover:bg-[#0090D1]/90"
-            onClick={() => window.open('https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708', '_blank')}
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-          >
-            <span className="whitespace-nowrap">
-              {language === 'fr' ? 'Faire un don' : 'Donate'}
-            </span>
-          </button>
-        </div>
-        
-        {/* Overlay avec gradient adaptatif */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/40 sm:from-black/20 sm:to-black/30"></div>
+        {/* Overlay avec gradient adaptatif - Optimisé pour mobile */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/10 to-black/50 sm:from-black/25 sm:via-transparent sm:to-black/35 md:from-black/20 md:to-black/30"></div>
         
         {/* Scroll Indicator - Responsive */}
         <div className="absolute bottom-4 xs:bottom-6 sm:bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2 z-20">
