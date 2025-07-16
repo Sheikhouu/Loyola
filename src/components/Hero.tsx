@@ -18,21 +18,20 @@ const Hero = () => {
           className="w-full h-full object-cover"
         />
         
-        {/* SVG en haut au centre */}
-        <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10">
+        {/* SVG tout en haut sans padding */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10">
           <img 
             src={heroSvg}
-            alt={language === 'fr' ? 'Logo Alexandre Teo' : 'Alexandre Teo Logo'}
-            className="h-24 md:h-32 w-auto"
+            alt={language === 'fr' ? 'Logo Français' : 'English Logo'}
+            className="h-16 md:h-20 lg:h-24 w-auto"
           />
         </div>
         
-        {/* Bouton Don en bas à gauche */}
+        {/* Bouton "Faire un don" en bas à gauche */}
         <div className="absolute bottom-8 left-8 z-10">
-          <button
-            onClick={() => window.open('https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708', '_blank')}
-            className="bg-[#292B87] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#0090D1] transition-all duration-300 transform hover:scale-105 shadow-lg"
-            style={{ fontFamily: 'Open Sans, sans-serif' }}
+          <button 
+            className="bg-[#292B87] hover:bg-[#0090D1] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+            onClick={() => window.open('https://donate.example.com', '_blank')}
           >
             {language === 'fr' ? 'Faire un don' : 'Donate'}
           </button>

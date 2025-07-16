@@ -33,6 +33,7 @@ const Volunteer = () => {
     e.preventDefault();
     // Handle form submission
     console.log('Form submitted:', formData);
+    
     // Reset form
     setFormData({
       firstName: '',
@@ -43,29 +44,31 @@ const Volunteer = () => {
       message: ''
     });
     
-    // Show success message
-    alert(language === 'fr' 
-      ? 'Merci pour votre intérêt ! Nous vous contacterons bientôt.'
-      : 'Thank you for your interest! We will contact you soon.'
-    );
+    // Show success message or redirect
+    alert(language === 'fr' ? 'Merci ! Nous vous contacterons bientôt.' : 'Thank you! We\'ll be in touch soon.');
   };
 
-  const interests = language === 'fr' ? [
-    'Porte-à-porte',
-    'Appels téléphoniques',
-    'Médias sociaux',
-    'Événements',
-    'Distribution de matériel',
-    'Traduction',
-    'Autres'
-  ] : [
-    'Door-to-door',
-    'Phone calls',
-    'Social media',
-    'Events',
-    'Material distribution',
-    'Translation',
-    'Other'
+  const interests = [
+    {
+      id: 'canvassing',
+      label: language === 'fr' ? 'Porte-à-porte' : 'Door-to-door canvassing',
+      description: language === 'fr' ? 'Rencontrer les électeurs dans le quartier' : 'Meet voters in the neighborhood'
+    },
+    {
+      id: 'events',
+      label: language === 'fr' ? 'Organisation d\'événements' : 'Event organization',
+      description: language === 'fr' ? 'Aider à organiser des événements de campagne' : 'Help organize campaign events'
+    },
+    {
+      id: 'phone-banking',
+      label: language === 'fr' ? 'Appels téléphoniques' : 'Phone banking',
+      description: language === 'fr' ? 'Contacter les électeurs par téléphone' : 'Contact voters by phone'
+    },
+    {
+      id: 'digital',
+      label: language === 'fr' ? 'Médias sociaux' : 'Social media',
+      description: language === 'fr' ? 'Aider avec les médias sociaux et le marketing numérique' : 'Help with social media and digital marketing'
+    }
   ];
 
   return (
@@ -75,7 +78,7 @@ const Volunteer = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#292B87] mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              {language === 'fr' ? 'Rejoignez notre équipe' : 'Join our team'}
+              {language === 'fr' ? 'Bénévolat' : 'Volunteer'}
             </h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
               {language === 'fr' 
@@ -88,10 +91,10 @@ const Volunteer = () => {
           {/* Volunteer Form */}
           <div className="bg-white rounded-lg shadow-lg p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name Fields */}
+              {/* Personal Information */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                     {language === 'fr' ? 'Prénom' : 'First Name'} *
                   </label>
                   <input
@@ -101,13 +104,13 @@ const Volunteer = () => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0090D1] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-2" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                    {language === 'fr' ? 'Nom' : 'Last Name'} *
+                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
+                    {language === 'fr' ? 'Nom de famille' : 'Last Name'} *
                   </label>
                   <input
                     type="text"
@@ -116,17 +119,16 @@ const Volunteer = () => {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0090D1] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
               </div>
 
-              {/* Contact Fields */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                    {language === 'fr' ? 'Courriel' : 'Email'} *
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    {language === 'fr' ? 'Adresse courriel' : 'Email Address'} *
                   </label>
                   <input
                     type="email"
@@ -135,13 +137,13 @@ const Volunteer = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0090D1] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                    {language === 'fr' ? 'Téléphone' : 'Phone'}
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                    {language === 'fr' ? 'Numéro de téléphone' : 'Phone Number'}
                   </label>
                   <input
                     type="tel"
@@ -149,7 +151,7 @@ const Volunteer = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0090D1] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
@@ -157,43 +159,44 @@ const Volunteer = () => {
 
               {/* Interests */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-4" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                  {language === 'fr' ? 'Domaines d\'intérêt' : 'Areas of Interest'}
+                <label className="block text-sm font-medium text-gray-700 mb-4">
+                  {language === 'fr' ? 'Comment aimeriez-vous contribuer ?' : 'How would you like to contribute?'}
                 </label>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {interests.map((interest) => (
-                    <label key={interest} className="flex items-center space-x-2 cursor-pointer">
+                    <div key={interest.id} className="flex items-start space-x-3">
                       <input
                         type="checkbox"
-                        checked={formData.interests.includes(interest)}
-                        onChange={() => handleInterestChange(interest)}
-                        className="w-4 h-4 text-[#0090D1] border-gray-300 rounded focus:ring-[#0090D1]"
+                        id={interest.id}
+                        checked={formData.interests.includes(interest.id)}
+                        onChange={() => handleInterestChange(interest.id)}
+                        className="mt-1 h-4 w-4 text-[#292B87] focus:ring-[#292B87] border-gray-300 rounded"
                       />
-                      <span className="text-sm text-gray-700" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                        {interest}
-                      </span>
-                    </label>
+                      <div>
+                        <label htmlFor={interest.id} className="text-sm font-medium text-gray-900 cursor-pointer">
+                          {interest.label}
+                        </label>
+                        <p className="text-xs text-gray-500 mt-1">{interest.description}</p>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
 
               {/* Message */}
               <div>
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                   {language === 'fr' ? 'Message (optionnel)' : 'Message (optional)'}
                 </label>
                 <textarea
                   id="message"
                   name="message"
-                  rows={4}
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder={language === 'fr' 
-                    ? 'Dites-nous en plus sur votre motivation...'
-                    : 'Tell us more about your motivation...'
-                  }
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0090D1] focus:border-transparent resize-none"
+                  rows={4}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
                   style={{ fontFamily: 'Open Sans, sans-serif' }}
+                  placeholder={language === 'fr' ? 'Dites-nous en plus sur votre motivation...' : 'Tell us more about your motivation...'}
                 />
               </div>
 
@@ -201,13 +204,27 @@ const Volunteer = () => {
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-[#292B87] text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-[#0090D1] transition-all duration-300 transform hover:scale-105"
+                  className="bg-[#292B87] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0090D1] transition-all duration-200 transform hover:scale-105"
                   style={{ fontFamily: 'Open Sans, sans-serif' }}
                 >
-                  {language === 'fr' ? 'Rejoindre l\'équipe' : 'Join the team'}
+                  {language === 'fr' ? 'Envoyer ma candidature' : 'Submit Application'}
                 </button>
               </div>
             </form>
+          </div>
+
+          {/* Contact Information */}
+          <div className="mt-12 text-center">
+            <p className="text-gray-600 mb-4" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+              {language === 'fr' 
+                ? 'Des questions ? Contactez notre coordinateur bénévole :' 
+                : 'Questions? Contact our volunteer coordinator:'
+              }
+            </p>
+            <div className="space-y-2">
+              <p className="text-[#292B87] font-semibold">coordinator@alexandreteo.ca</p>
+              <p className="text-gray-600">(514) 555-0123</p>
+            </div>
           </div>
         </div>
       </div>
