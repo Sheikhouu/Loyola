@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bus, Shield, Trees, Heart, Home, Briefcase, Settings, Users } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
+import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 
 const Priorities = () => {
@@ -68,10 +68,7 @@ const Priorities = () => {
             </h2>
             <div className="w-24 h-1 bg-[#0090D1] mx-auto mb-6"></div>
             <p className="text-xl text-[#1C1C1C] max-w-3xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-              {language === 'fr' 
-                ? 'Huit priorités concrètes pour transformer notre arrondissement et améliorer la qualité de vie de tous les résidents.'
-                : 'Eight concrete priorities to transform our district and improve the quality of life for all residents.'
-              }
+              {t('platformSubtitle', language)}
             </p>
           </div>
           
@@ -96,8 +93,12 @@ const Priorities = () => {
           
           {/* Call to Action */}
           <div className="text-center mt-16">
-            <button className="bg-[#0090D1] text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-[#292B87] transition-all duration-300 transform hover:scale-105 shadow-lg" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-              {language === 'fr' ? 'Voir le plan détaillé' : 'View detailed plan'}
+            <button 
+              onClick={() => window.open('https://monelection.org/form/member/EcTkQougzqf4T32A9Km25W4zCV2aAz', '_blank')}
+              className="bg-[#0090D1] text-white px-10 py-4 rounded-full font-semibold text-lg hover:bg-[#292B87] transition-all duration-300 transform hover:scale-105 shadow-lg" 
+              style={{ fontFamily: 'Open Sans, sans-serif' }}
+            >
+              {t('viewDetailedPlan', language)}
             </button>
           </div>
         </div>

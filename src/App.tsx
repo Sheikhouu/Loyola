@@ -1,11 +1,11 @@
 import React from 'react';
-import { useLanguage } from './hooks/useLanguage';
+import { useLanguage } from './contexts/LanguageContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import Priorities from './components/Priorities';
 import Endorsements from './components/Endorsements';
-import Media from './components/Media';
+import News from './components/News';
 import Volunteer from './components/Volunteer';
 import Footer from './components/Footer';
 
@@ -24,7 +24,7 @@ function App() {
       <About />
       <Priorities />
       <Endorsements />
-      <Media />
+      <News />
       <Volunteer />
       <Footer />
     </div>

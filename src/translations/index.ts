@@ -4,7 +4,6 @@ export const translations = {
     about: 'À propos',
     platform: 'Plateforme',
     endorsements: 'Soutiens',
-    media: 'Médias',
     volunteer: 'Bénévolat',
     donate: 'Faire un don',
     
@@ -15,13 +14,25 @@ export const translations = {
     
     // About
     aboutTitle: 'Rencontrez Alexandre',
+    aboutSubtitle: 'Un leader communautaire dévoué avec une vision claire pour l\'avenir de Loyola.',
+    aboutCommitment: 'Un engagement authentique pour notre communauté',
     aboutBio1: 'Alexandre Teodoresco est un leader communautaire dévoué qui habite Loyola depuis plus d\'une décennie. Avec une formation en urbanisme et développement durable, il apporte à la fois expertise et passion aux défis auxquels fait face notre arrondissement.',
     aboutBio2: 'En tant que père de deux jeunes enfants et membre actif de groupes environnementaux locaux, Alexandre comprend l\'importance de créer une communauté qui fonctionne pour les familles tout en protégeant nos espaces naturels. Son travail avec les associations de quartier et les entreprises locales lui a donné une compréhension approfondie des besoins des résidents de Loyola.',
     aboutBio3: 'Alexandre détient une maîtrise en urbanisme de l\'Université McGill et a passé les huit dernières années à travailler sur des projets de transport durable à travers Montréal. Il a joué un rôle déterminant dans la défense d\'un meilleur accès au transport en commun et d\'infrastructures cyclables plus sûres dans notre communauté.',
     aboutBio4: 'Avec Ensemble Montréal, Alexandre s\'engage à apporter des perspectives nouvelles et des solutions collaboratives au Conseil municipal de Montréal. Sa vision pour Loyola se concentre sur la croissance inclusive, la durabilité environnementale et le renforcement des liens qui rendent notre quartier spécial.',
+    education: 'Formation',
+    educationDesc: 'Maîtrise en urbanisme, McGill',
+    experience: 'Expérience',
+    experienceDesc: '8 ans en transport durable',
+    engagement: 'Engagement',
+    engagementDesc: 'Leader communautaire actif',
+    residence: 'Résidence',
+    residenceDesc: 'Loyola depuis 10+ ans',
     
     // Platform
     platformTitle: 'Nos priorités pour Loyola',
+    platformSubtitle: 'Huit priorités concrètes pour transformer notre arrondissement et améliorer la qualité de vie de tous les résidents.',
+    viewDetailedPlan: 'Voir le plan détaillé',
     affordableHousing: 'Logement abordable',
     affordableHousingDesc: 'Promouvoir des options de logement diversifiées et protéger les résidents de longue date contre le déplacement tout en accueillant de nouveaux voisins.',
     accessibleTransport: 'Transport accessible',
@@ -41,11 +52,21 @@ export const translations = {
     
     // Endorsements
     endorsementsTitle: 'Ils nous soutiennent',
+    endorsementsSubtitle: 'Des leaders communautaires, des professionnels et des résidents de Loyola nous font confiance.',
     endorsementQuote: '"Alexandre apporte des idées fraîches et un engagement authentique à notre communauté. Son expérience en urbanisme et sa compréhension profonde des enjeux locaux en font le bon choix pour Loyola."',
     endorsementSource: '- Coalition des groupes communautaires de Loyola',
+    joinHundreds: 'Rejoignez les centaines de résidents qui soutiennent notre vision',
+    addEndorsement: 'Ajouter votre soutien',
     
-    // Media
-    mediaTitle: 'Dans les médias',
+    // News
+    news: 'Actualités',
+    newsTitle: 'Actualités Ensemble Montréal',
+    newsSubtitle: 'Restez informé des dernières nouvelles et initiatives d\'Ensemble Montréal',
+    newsDescription: 'Découvrez les dernières actualités d\'Ensemble Montréal, les initiatives de Soraya Martinez Ferrada et les actions de notre équipe pour améliorer la qualité de vie à Montréal.',
+    viewAllNews: 'Voir toutes les actualités',
+    publishedOn: 'Publié le',
+    readFullArticle: 'Lire l\'article complet',
+    
     readMore: 'Lire plus',
     
     // Volunteer
@@ -62,25 +83,38 @@ export const translations = {
     digitalOutreachDesc: 'Soutenez nos efforts d\'engagement sur les réseaux sociaux et en ligne',
     signUpVolunteer: 'S\'inscrire comme bénévole',
     volunteerContact: 'Prêt à commencer ? Contactez notre coordinateur bénévole :',
+    readyToMakeDifference: 'Prêt à faire la différence ?',
+    joinTeam: 'Rejoignez notre équipe de bénévoles passionnés et aidez-nous à construire une Loyola meilleure pour tous.',
+    activeVolunteers: 'Bénévoles actifs',
+    eventsOrganized: 'Événements organisés',
+    doorsVisited: 'Portes visitées',
+    hoursPerWeek: 'heures/semaine',
+    flexible: 'Flexible',
     
     // Footer
     supportCampaign: 'Soutenez notre campagne',
     supportDescription: 'Votre contribution nous aide à construire une Loyola plus forte et plus inclusive',
+    basicSupport: 'Soutien de base',
+    recommendedSupport: 'Soutien recommandé',
+    generousSupport: 'Soutien généreux',
     contactUs: 'Nous contacter',
     followUs: 'Suivez-nous',
+    navigation: 'Navigation',
+    campaignOffice: 'Bureau de campagne',
     legal: 'Légal',
     privacyPolicy: 'Politique de confidentialité',
     termsOfUse: 'Conditions d\'utilisation',
     financialDisclosure: 'Divulgation financière',
     copyright: '© 2024 Alexandre Teodoresco pour Loyola. Tous droits réservés.',
-    authorized: 'Autorisé par l\'agent officiel d\'Alexandre Teodoresco'
+    authorized: 'Autorisé par l\'agent officiel d\'Alexandre Teodoresco',
+    togetherVision: 'Ensemble, construisons une Loyola plus juste, plus verte et plus solidaire pour tous les résidents.',
+    councillorTitle: 'Conseiller municipal Loyola'
   },
   en: {
     // Header
     about: 'About',
     platform: 'Platform',
     endorsements: 'Endorsements',
-    media: 'Media',
     volunteer: 'Volunteer',
     donate: 'Donate',
     
@@ -91,13 +125,25 @@ export const translations = {
     
     // About
     aboutTitle: 'Meet Alexandre',
+    aboutSubtitle: 'A dedicated community leader with a clear vision for Loyola\'s future.',
+    aboutCommitment: 'Authentic commitment to our community',
     aboutBio1: 'Alexandre Teodoresco is a dedicated community leader who has called Loyola home for over a decade. With a background in urban planning and sustainable development, he brings both expertise and passion to the challenges facing our district.',
     aboutBio2: 'As a father of two young children and an active member of local environmental groups, Alexandre understands the importance of creating a community that works for families while protecting our natural spaces. His work with neighborhood associations and local businesses has given him deep insights into the needs of Loyola residents.',
     aboutBio3: 'Alexandre holds a Master\'s degree in Urban Planning from McGill University and has spent the last eight years working on sustainable transportation projects across Montreal. He has been instrumental in advocating for improved public transit access and safer cycling infrastructure in our community.',
     aboutBio4: 'With Ensemble Montréal, Alexandre is committed to bringing fresh perspectives and collaborative solutions to Montreal City Council. His vision for Loyola centers on inclusive growth, environmental sustainability, and strengthening the bonds that make our neighborhood special.',
+    education: 'Education',
+    educationDesc: 'Master\'s in Urban Planning, McGill',
+    experience: 'Experience',
+    experienceDesc: '8 years in sustainable transport',
+    engagement: 'Engagement',
+    engagementDesc: 'Active community leader',
+    residence: 'Residence',
+    residenceDesc: 'Loyola for 10+ years',
     
     // Platform
     platformTitle: 'Our Priorities for Loyola',
+    platformSubtitle: 'Eight concrete priorities to transform our district and improve the quality of life for all residents.',
+    viewDetailedPlan: 'View detailed plan',
     affordableHousing: 'Affordable Housing',
     affordableHousingDesc: 'Promoting diverse housing options and protecting long-term residents from displacement while welcoming new neighbors.',
     accessibleTransport: 'Accessible Transportation',
@@ -117,11 +163,21 @@ export const translations = {
     
     // Endorsements
     endorsementsTitle: 'Endorsements',
+    endorsementsSubtitle: 'Community leaders, professionals, and Loyola residents trust us.',
     endorsementQuote: '"Alexandre brings fresh ideas and genuine commitment to our community. His experience in urban planning and his deep understanding of local issues make him the right choice for Loyola."',
     endorsementSource: '- Coalition of Loyola Community Groups',
+    joinHundreds: 'Join hundreds of residents who support our vision',
+    addEndorsement: 'Add your endorsement',
     
-    // Media
-    mediaTitle: 'In the News',
+    // News
+    news: 'News',
+    newsTitle: 'Ensemble Montréal News',
+    newsSubtitle: 'Stay informed with the latest news and initiatives from Ensemble Montréal',
+    newsDescription: 'Discover the latest news from Ensemble Montréal, Soraya Martinez Ferrada\'s initiatives, and our team\'s actions to improve quality of life in Montreal.',
+    viewAllNews: 'View all news',
+    publishedOn: 'Published on',
+    readFullArticle: 'Read full article',
+    
     readMore: 'Read More',
     
     // Volunteer
@@ -138,18 +194,32 @@ export const translations = {
     digitalOutreachDesc: 'Support our social media and online engagement efforts',
     signUpVolunteer: 'Sign Up to Volunteer',
     volunteerContact: 'Ready to get started? Contact our volunteer coordinator:',
+    readyToMakeDifference: 'Ready to make a difference?',
+    joinTeam: 'Join our team of passionate volunteers and help us build a better Loyola for everyone.',
+    activeVolunteers: 'Active volunteers',
+    eventsOrganized: 'Events organized',
+    doorsVisited: 'Doors visited',
+    hoursPerWeek: 'hours/week',
+    flexible: 'Flexible',
     
     // Footer
     supportCampaign: 'Support Our Campaign',
     supportDescription: 'Your contribution helps us build a stronger, more inclusive Loyola',
+    basicSupport: 'Basic support',
+    recommendedSupport: 'Recommended support',
+    generousSupport: 'Generous support',
     contactUs: 'Contact Us',
     followUs: 'Follow Us',
+    navigation: 'Quick Links',
+    campaignOffice: 'Campaign Office',
     legal: 'Legal',
     privacyPolicy: 'Privacy Policy',
     termsOfUse: 'Terms of Use',
     financialDisclosure: 'Financial Disclosure',
     copyright: '© 2024 Alexandre Teodoresco for Loyola. All rights reserved.',
-    authorized: 'Authorized by the Official Agent for Alexandre Teodoresco'
+    authorized: 'Authorized by the Official Agent for Alexandre Teodoresco',
+    togetherVision: 'Together, let\'s build a fairer, greener, and more united Loyola for all residents.',
+    councillorTitle: 'Loyola City Councillor'
   }
 };
 

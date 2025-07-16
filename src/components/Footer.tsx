@@ -1,6 +1,6 @@
 import React from 'react';
 import { Facebook, Instagram, Linkedin, Twitter, Mail, Phone, MapPin, Heart, ArrowRight } from 'lucide-react';
-import { useLanguage } from '../hooks/useLanguage';
+import { useLanguage } from '../contexts/LanguageContext';
 import { t } from '../translations';
 
 const Footer = () => {
@@ -34,7 +34,7 @@ const Footer = () => {
                   $25
                 </div>
                 <p className="text-white/80" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                  {language === 'fr' ? 'Soutien de base' : 'Basic support'}
+                  {t('basicSupport', language)}
                 </p>
               </div>
               <div className="bg-white/20 backdrop-blur-sm p-8 rounded-2xl border-2 border-[#0090D1]">
@@ -42,7 +42,7 @@ const Footer = () => {
                   $100
                 </div>
                 <p className="text-white/80" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                  {language === 'fr' ? 'Soutien recommandé' : 'Recommended support'}
+                  {t('recommendedSupport', language)}
                 </p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl">
@@ -50,12 +50,16 @@ const Footer = () => {
                   $250
                 </div>
                 <p className="text-white/80" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                  {language === 'fr' ? 'Soutien généreux' : 'Generous support'}
+                  {t('generousSupport', language)}
                 </p>
               </div>
             </div>
             
-            <button className="group bg-[#0090D1] text-white px-12 py-4 rounded-full font-semibold text-xl hover:bg-white hover:text-[#292B87] transition-all duration-300 transform hover:scale-105 shadow-2xl" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+            <button 
+              onClick={() => window.open('https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708', '_blank')}
+              className="group bg-[#0090D1] text-white px-12 py-4 rounded-full font-semibold text-xl hover:bg-white hover:text-[#292B87] transition-all duration-300 transform hover:scale-105 shadow-2xl" 
+              style={{ fontFamily: 'Open Sans, sans-serif' }}
+            >
               {t('donateNow', language)}
               <ArrowRight className="inline-block ml-3 w-6 h-6 transform group-hover:translate-x-1 transition-transform duration-200" />
             </button>
@@ -74,13 +78,10 @@ const Footer = () => {
                   Alexandre Teo
                 </h3>
                 <p className="text-[#0090D1] font-medium mb-6 text-lg">
-                  Ensemble Montréal – {language === 'fr' ? 'Conseiller municipal Loyola' : 'Loyola City Councillor'}
+                  Ensemble Montréal – {t('councillorTitle', language)}
                 </p>
                 <p className="text-white/80 mb-8 leading-relaxed max-w-md" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                  {language === 'fr' 
-                    ? 'Ensemble, construisons une Loyola plus juste, plus verte et plus solidaire pour tous les résidents.'
-                    : 'Together, let\'s build a fairer, greener, and more united Loyola for all residents.'
-                  }
+                  {t('togetherVision', language)}
                 </p>
                 
                 {/* Social Links */}
@@ -103,14 +104,14 @@ const Footer = () => {
               {/* Quick Links */}
               <div>
                 <h4 className="text-xl font-semibold mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                  {language === 'fr' ? 'Navigation' : 'Quick Links'}
+                  {t('navigation', language)}
                 </h4>
                 <div className="space-y-3">
                   {[
                     { key: 'about', section: 'about' },
                     { key: 'platform', section: 'platform' },
                     { key: 'endorsements', section: 'endorsements' },
-                    { key: 'media', section: 'media' },
+                    { key: 'news', section: 'news' },
                     { key: 'volunteer', section: 'volunteer' }
                   ].map((item) => (
                     <button
@@ -142,7 +143,7 @@ const Footer = () => {
                   <div className="flex items-start text-white/80" style={{ fontFamily: 'Open Sans, sans-serif' }}>
                     <MapPin size={18} className="mr-3 mt-1" />
                     <span>
-                      {language === 'fr' ? 'Bureau de campagne' : 'Campaign Office'}<br />
+                      {t('campaignOffice', language)}<br />
                       123 Loyola Avenue<br />
                       Montreal, QC H4V 1A1
                     </span>
