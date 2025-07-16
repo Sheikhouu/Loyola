@@ -12,7 +12,7 @@ const LanguageSwitcher = () => {
           language === 'fr'
             ? 'bg-[#292B87] text-white shadow-sm'
             : 'text-[#1C1C1C] hover:bg-gray-200'
-        }`}
+        } px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm`}
         style={{ fontFamily: 'Open Sans, sans-serif' }}
       >
         FR
@@ -23,7 +23,7 @@ const LanguageSwitcher = () => {
           language === 'en'
             ? 'bg-[#292B87] text-white shadow-sm'
             : 'text-[#1C1C1C] hover:bg-gray-200'
-        }`}
+        } px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm`}
         style={{ fontFamily: 'Open Sans, sans-serif' }}
       >
         EN

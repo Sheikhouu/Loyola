@@ -71,44 +71,44 @@ const News = () => {
           {/* Section Header */}
           <div className="text-center mb-20">
             <div className="flex items-center justify-center mb-6">
-              <Newspaper className="w-12 h-12 text-[#292B87] mr-4" />
-              <h2 className="text-5xl md:text-6xl font-bold text-[#292B87]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <Newspaper className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#292B87] mr-2 sm:mr-4" />
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#292B87]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {t('newsTitle', language)}
               </h2>
             </div>
             <div className="w-24 h-1 bg-[#0090D1] mx-auto mb-6"></div>
-            <p className="text-xl text-[#1C1C1C] max-w-4xl mx-auto mb-8" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+            <p className="text-lg sm:text-xl text-[#1C1C1C] max-w-4xl mx-auto mb-8 px-4" style={{ fontFamily: 'Open Sans, sans-serif' }}>
               {t('newsSubtitle', language)}
             </p>
-            <p className="text-lg text-[#1C1C1C]/80 max-w-3xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+            <p className="text-base sm:text-lg text-[#1C1C1C]/80 max-w-3xl mx-auto px-4" style={{ fontFamily: 'Open Sans, sans-serif' }}>
               {t('newsDescription', language)}
             </p>
           </div>
           
           {/* News Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
             {newsArticles.map((article, index) => (
               <div 
                 key={article.id} 
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group"
               >
                 {/* Article Header */}
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold text-white ${article.color}`}>
+                    <span className={`inline-flex items-center px-2 py-1 sm:px-3 rounded-full text-xs font-semibold text-white ${article.color}`}>
                       {article.category}
                     </span>
-                    <div className="flex items-center text-[#1C1C1C]/60 text-sm" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                      <Calendar className="w-4 h-4 mr-2" />
+                    <div className="flex items-center text-[#1C1C1C]/60 text-xs sm:text-sm" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
                       {article.date}
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-[#292B87] mb-4 line-clamp-2 group-hover:text-[#0090D1] transition-colors duration-300" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <h3 className="text-lg sm:text-xl font-bold text-[#292B87] mb-3 sm:mb-4 line-clamp-2 group-hover:text-[#0090D1] transition-colors duration-300" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     {article.title}
                   </h3>
                   
-                  <p className="text-[#1C1C1C]/80 text-sm line-clamp-3 mb-6" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                  <p className="text-[#1C1C1C]/80 text-xs sm:text-sm line-clamp-3 mb-4 sm:mb-6" style={{ fontFamily: 'Open Sans, sans-serif' }}>
                     {article.excerpt}
                   </p>
                   
@@ -116,11 +116,11 @@ const News = () => {
                     href={article.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-[#292B87] hover:text-[#0090D1] font-semibold text-sm transition-all duration-300 group/link"
+                    className="inline-flex items-center text-[#292B87] hover:text-[#0090D1] font-semibold text-xs sm:text-sm transition-all duration-300 group/link"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   >
                     {t('readFullArticle', language)}
-                    <ExternalLink className="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform duration-300" />
+                    <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2 group-hover/link:translate-x-1 transition-transform duration-300" />
                   </a>
                 </div>
               </div>
@@ -129,11 +129,11 @@ const News = () => {
           
           {/* Call to Action */}
           <div className="text-center">
-            <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
-              <h3 className="text-3xl font-bold text-[#292B87] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <div className="bg-white rounded-2xl p-6 sm:p-8 md:p-12 shadow-lg">
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#292B87] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Restez connecté avec Ensemble Montréal
               </h3>
-              <p className="text-lg text-[#1C1C1C]/80 mb-8 max-w-2xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+              <p className="text-base sm:text-lg text-[#1C1C1C]/80 mb-6 sm:mb-8 max-w-2xl mx-auto px-4" style={{ fontFamily: 'Open Sans, sans-serif' }}>
                 Ne manquez aucune actualité, initiative ou événement d'Ensemble Montréal. 
                 Visitez notre site officiel pour toutes les dernières nouvelles.
               </p>
@@ -141,11 +141,11 @@ const News = () => {
                 href="https://ensemblemtl.org/actualites/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center bg-[#292B87] hover:bg-[#0090D1] text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center bg-[#292B87] hover:bg-[#0090D1] text-white font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-sm sm:text-base"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
                 {t('viewAllNews', language)}
-                <ArrowRight className="w-5 h-5 ml-3" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3" />
               </a>
             </div>
           </div>

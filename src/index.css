@@ -207,15 +207,50 @@ a:focus-visible {
 /* Enhanced responsive typography */
 @media (max-width: 640px) {
   h1 {
-    font-size: clamp(2rem, 8vw, 4rem);
+    font-size: clamp(1.75rem, 8vw, 3rem);
   }
   
   h2 {
-    font-size: clamp(1.5rem, 6vw, 3rem);
+    font-size: clamp(1.25rem, 6vw, 2.5rem);
   }
   
   h3 {
-    font-size: clamp(1.25rem, 5vw, 2rem);
+    font-size: clamp(1.125rem, 5vw, 1.75rem);
+  }
+  
+  /* Améliorer l'espacement sur mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Améliorer la lisibilité des textes longs sur mobile */
+@media (max-width: 768px) {
+  p {
+    line-height: 1.6;
+  }
+  
+  /* Réduire l'espacement vertical sur mobile */
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .space-y-8 > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+/* Améliorer les interactions tactiles */
+@media (max-width: 1024px) {
+  button, a {
+    min-height: 44px; /* Taille minimale recommandée pour les éléments tactiles */
+  }
+  
+  /* Augmenter la zone de clic des liens */
+  a {
+    padding: 0.25rem;
+    margin: -0.25rem;
   }
 }
 

@@ -72,15 +72,15 @@ const Volunteer = () => {
   ];
 
   return (
-    <section id="volunteer" className="py-20 bg-gray-50">
+    <section id="volunteer" className="py-12 sm:py-16 md:py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#292B87] mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#292B87] mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
               {language === 'fr' ? 'Bénévolat' : 'Volunteer'}
             </h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+            <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto px-4" style={{ fontFamily: 'Open Sans, sans-serif' }}>
               {language === 'fr' 
                 ? 'Votre engagement peut faire la différence dans notre communauté. Ensemble, construisons un avenir meilleur pour Loyola.'
                 : 'Your commitment can make a difference in our community. Together, let\'s build a better future for Loyola.'
@@ -89,10 +89,10 @@ const Volunteer = () => {
           </div>
 
           {/* Volunteer Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
+          <div className="bg-white rounded-lg shadow-lg p-6 sm:p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Personal Information */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                     {language === 'fr' ? 'Prénom' : 'First Name'} *
@@ -104,7 +104,7 @@ const Volunteer = () => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent text-sm sm:text-base"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
@@ -119,13 +119,13 @@ const Volunteer = () => {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent text-sm sm:text-base"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                     {language === 'fr' ? 'Adresse courriel' : 'Email Address'} *
@@ -137,7 +137,7 @@ const Volunteer = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent text-sm sm:text-base"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
@@ -151,7 +151,7 @@ const Volunteer = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
+                    className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent text-sm sm:text-base"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
@@ -162,7 +162,7 @@ const Volunteer = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-4">
                   {language === 'fr' ? 'Comment aimeriez-vous contribuer ?' : 'How would you like to contribute?'}
                 </label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {interests.map((interest) => (
                     <div key={interest.id} className="flex items-start space-x-3">
                       <input
@@ -176,7 +176,7 @@ const Volunteer = () => {
                         <label htmlFor={interest.id} className="text-sm font-medium text-gray-900 cursor-pointer">
                           {interest.label}
                         </label>
-                        <p className="text-xs text-gray-500 mt-1">{interest.description}</p>
+                        <p className="text-xs text-gray-500 mt-1 leading-tight">{interest.description}</p>
                       </div>
                     </div>
                   ))}
@@ -193,8 +193,8 @@ const Volunteer = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
+                  rows={3}
+                  className="w-full px-3 py-2 sm:px-4 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent text-sm sm:text-base"
                   style={{ fontFamily: 'Open Sans, sans-serif' }}
                   placeholder={language === 'fr' ? 'Dites-nous en plus sur votre motivation...' : 'Tell us more about your motivation...'}
                 />
@@ -204,7 +204,7 @@ const Volunteer = () => {
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-[#292B87] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0090D1] transition-all duration-200 transform hover:scale-105"
+                  className="bg-[#292B87] text-white px-6 py-2 sm:px-8 sm:py-3 rounded-lg font-semibold hover:bg-[#0090D1] transition-all duration-200 transform hover:scale-105 text-sm sm:text-base"
                   style={{ fontFamily: 'Open Sans, sans-serif' }}
                 >
                   {language === 'fr' ? 'Envoyer ma candidature' : 'Submit Application'}
@@ -214,16 +214,16 @@ const Volunteer = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+          <div className="mt-8 sm:mt-12 text-center">
+            <p className="text-sm sm:text-base text-gray-600 mb-4 px-4" style={{ fontFamily: 'Open Sans, sans-serif' }}>
               {language === 'fr' 
                 ? 'Des questions ? Contactez notre coordinateur bénévole :' 
                 : 'Questions? Contact our volunteer coordinator:'
               }
             </p>
             <div className="space-y-2">
-              <p className="text-[#292B87] font-semibold">coordinator@alexandreteo.ca</p>
-              <p className="text-gray-600">(514) 555-0123</p>
+              <p className="text-sm sm:text-base text-[#292B87] font-semibold">coordinator@alexandreteo.ca</p>
+              <p className="text-sm sm:text-base text-gray-600">(514) 555-0123</p>
             </div>
           </div>
         </div>

@@ -54,18 +54,18 @@ const Header = () => {
             <img 
               src={headerSvg}
               alt={language === 'fr' ? 'Logo Français' : 'English Logo'}
-              className="h-12 md:h-14 lg:h-16 w-auto cursor-pointer"
+              className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto cursor-pointer"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             />
           </div>
 
           {/* Navigation Desktop */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-[#1C1C1C] hover:text-[#292B87] font-medium transition-colors duration-200"
+                className="text-[#1C1C1C] hover:text-[#292B87] font-medium transition-colors duration-200 text-sm xl:text-base"
                 style={{ fontFamily: 'Open Sans, sans-serif' }}
               >
                 {item.label}
@@ -73,7 +73,7 @@ const Header = () => {
             ))}
             <button
               onClick={() => window.open('https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708', '_blank')}
-              className="bg-[#292B87] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#0090D1] transition-all duration-200"
+              className="bg-[#292B87] text-white px-4 xl:px-6 py-2 rounded-full font-semibold hover:bg-[#0090D1] transition-all duration-200 text-sm xl:text-base"
               style={{ fontFamily: 'Open Sans, sans-serif' }}
             >
               {t('donate', language)}
@@ -81,7 +81,7 @@ const Header = () => {
           </nav>
 
           {/* Language Switcher et Menu Mobile */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <LanguageSwitcher />
             
             {/* Menu Mobile Button */}
@@ -100,8 +100,8 @@ const Header = () => {
 
         {/* Menu Mobile */}
         {isMenuOpen && (
-          <div className="lg:hidden border-t border-gray-200 py-4">
-            <nav className="flex flex-col space-y-4">
+          <div className="lg:hidden border-t border-gray-200 py-4 bg-white">
+            <nav className="flex flex-col space-y-3">
               {navItems.map((item) => (
                 <button
                   key={item.id}
@@ -109,7 +109,7 @@ const Header = () => {
                     scrollToSection(item.id);
                     setIsMenuOpen(false);
                   }}
-                  className="text-left text-[#1C1C1C] hover:text-[#292B87] font-medium transition-colors duration-200"
+                  className="text-left text-[#1C1C1C] hover:text-[#292B87] font-medium transition-colors duration-200 py-2 px-2"
                   style={{ fontFamily: 'Open Sans, sans-serif' }}
                 >
                   {item.label}
@@ -120,7 +120,7 @@ const Header = () => {
                   window.open('https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708', '_blank');
                   setIsMenuOpen(false);
                 }}
-                className="text-left bg-[#292B87] text-white px-6 py-2 rounded-full font-semibold hover:bg-[#0090D1] transition-all duration-200 w-fit"
+                className="text-left bg-[#292B87] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#0090D1] transition-all duration-200 w-fit mt-2"
                 style={{ fontFamily: 'Open Sans, sans-serif' }}
               >
                 {t('donate', language)}
