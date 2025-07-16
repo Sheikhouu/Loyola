@@ -246,6 +246,29 @@ a:focus-visible {
 
 /* Améliorations spécifiques pour la section Hero */
 
+/* Optimisation de la hauteur sur mobile */
+@media (max-width: 640px) {
+  .hero-section {
+    height: 70vh;
+    max-height: 600px;
+    min-height: 500px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .hero-section {
+    height: 80vh;
+    max-height: 700px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-section {
+    height: 90vh;
+    max-height: 800px;
+  }
+}
+
 /* Optimisation de la visibilité sur mobile */
 @media (max-width: 640px) {
   .hero-mobile-overlay {
