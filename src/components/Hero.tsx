@@ -9,8 +9,8 @@ const Hero = () => {
   const heroSvg = language === 'fr' ? '/svg_s/svg_fr.svg' : '/svg_s/svg_en.svg';
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-white">
-      {/* Image de fond sur toute la section */}
+    <section className="hidden md:block relative min-h-screen flex items-center justify-center bg-white">
+      {/* Image de fond */}
       <div className="absolute inset-0 w-full h-full">
         <img 
           src={heroImage}
@@ -18,32 +18,29 @@ const Hero = () => {
           className="w-full h-full object-cover"
         />
         
-        {/* SVG tout en haut sans padding */}
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10">
+        {/* SVG tout en haut avec animation d'apparition */}
+        <div className="absolute top-2 sm:top-4 left-1/2 transform -translate-x-1/2 z-10 animate-fade-in-down">
           <img 
             src={heroSvg}
             alt={language === 'fr' ? 'Logo Français' : 'English Logo'}
-            className="h-16 md:h-20 lg:h-24 w-auto"
+            className="h-12 sm:h-16 md:h-20 lg:h-24 w-auto drop-shadow-lg"
           />
         </div>
         
-        {/* Bouton "Faire un don" en bas à gauche */}
-        <div className="absolute bottom-8 left-8 z-10">
+        {/* Bouton "Faire un don" avec animation et couleurs optimisées */}
+        <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-4 sm:left-6 md:left-8 z-10 animate-fade-in-up">
           <button 
-            className="bg-[#292B87] hover:bg-[#0090D1] text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
-            onClick={() => window.open('https://donate.example.com', '_blank')}
+            className="bg-[#330066] hover:bg-[#330066]/80 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg font-semibold text-sm sm:text-base md:text-lg transition-all duration-500 shadow-lg hover:shadow-xl hover:scale-105 transform"
+            onClick={() => window.open('https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708', '_blank')}
           >
             {language === 'fr' ? 'Faire un don' : 'Donate'}
           </button>
         </div>
         
-        {/* Overlay avec gradient pour améliorer la lisibilité */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30"></div>
-        
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+        {/* Scroll Indicator avec animation améliorée */}
+        <div className="absolute bottom-4 sm:bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-fade-in-up">
+          <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-white rounded-full flex justify-center shadow-lg backdrop-blur-sm bg-white/10">
+            <div className="w-1 h-2 sm:h-3 bg-white rounded-full mt-1.5 sm:mt-2 animate-bounce"></div>
           </div>
         </div>
       </div>

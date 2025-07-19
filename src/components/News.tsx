@@ -71,12 +71,12 @@ const News = () => {
           {/* Section Header */}
           <div className="text-center mb-20">
             <div className="flex items-center justify-center mb-6">
-              <Newspaper className="w-12 h-12 text-[#292B87] mr-4" />
-              <h2 className="text-5xl md:text-6xl font-bold text-[#292B87]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <Newspaper className="w-12 h-12 text-[#330066] mr-4" />
+              <h2 className="text-5xl md:text-6xl font-bold text-[#330066]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 {t('newsTitle', language)}
               </h2>
             </div>
-            <div className="w-24 h-1 bg-[#0090D1] mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-[#330066] mx-auto mb-6"></div>
             <p className="text-xl text-[#1C1C1C] max-w-4xl mx-auto mb-8" style={{ fontFamily: 'Open Sans, sans-serif' }}>
               {t('newsSubtitle', language)}
             </p>
@@ -92,8 +92,9 @@ const News = () => {
                 key={article.id} 
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group"
               >
-                {/* Article Header */}
+                {/* Article Content */}
                 <div className="p-6">
+                  {/* Category and Date */}
                   <div className="flex items-center justify-between mb-4">
                     <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold text-white ${article.color}`}>
                       {article.category}
@@ -104,7 +105,7 @@ const News = () => {
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-bold text-[#292B87] mb-4 line-clamp-2 group-hover:text-[#0090D1] transition-colors duration-300" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  <h3 className="text-xl font-bold text-[#330066] mb-4 line-clamp-2 group-hover:text-[#330066]/80 transition-colors duration-300" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     {article.title}
                   </h3>
                   
@@ -116,7 +117,7 @@ const News = () => {
                     href={article.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-[#292B87] hover:text-[#0090D1] font-semibold text-sm transition-all duration-300 group/link"
+                    className="inline-flex items-center text-[#330066] hover:text-[#330066]/80 font-semibold text-sm transition-all duration-300 group/link"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   >
                     {t('readFullArticle', language)}
@@ -130,7 +131,7 @@ const News = () => {
           {/* Call to Action */}
           <div className="text-center">
             <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
-              <h3 className="text-3xl font-bold text-[#292B87] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <h3 className="text-3xl font-bold text-[#330066] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Restez connecté avec Ensemble Montréal
               </h3>
               <p className="text-lg text-[#1C1C1C]/80 mb-8 max-w-2xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
@@ -141,7 +142,7 @@ const News = () => {
                 href="https://ensemblemtl.org/actualites/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center bg-[#292B87] hover:bg-[#0090D1] text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center bg-[#330066] hover:bg-[#330066]/80 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
                 {t('viewAllNews', language)}

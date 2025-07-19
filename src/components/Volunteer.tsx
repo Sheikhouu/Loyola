@@ -77,7 +77,7 @@ const Volunteer = () => {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#292B87] mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#330066] mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
               {language === 'fr' ? 'Bénévolat' : 'Volunteer'}
             </h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
@@ -104,7 +104,7 @@ const Volunteer = () => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#330066] focus:border-transparent"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
@@ -119,7 +119,7 @@ const Volunteer = () => {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#330066] focus:border-transparent"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
@@ -137,7 +137,7 @@ const Volunteer = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#330066] focus:border-transparent"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
@@ -151,12 +151,12 @@ const Volunteer = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#330066] focus:border-transparent"
                     style={{ fontFamily: 'Open Sans, sans-serif' }}
                   />
                 </div>
-              </div>
-
+          </div>
+          
               {/* Interests */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-4">
@@ -170,14 +170,14 @@ const Volunteer = () => {
                         id={interest.id}
                         checked={formData.interests.includes(interest.id)}
                         onChange={() => handleInterestChange(interest.id)}
-                        className="mt-1 h-4 w-4 text-[#292B87] focus:ring-[#292B87] border-gray-300 rounded"
+                        className="mt-1 h-4 w-4 text-[#330066] focus:ring-[#330066] border-gray-300 rounded"
                       />
                       <div>
                         <label htmlFor={interest.id} className="text-sm font-medium text-gray-900 cursor-pointer">
                           {interest.label}
                         </label>
                         <p className="text-xs text-gray-500 mt-1">{interest.description}</p>
-                      </div>
+                  </div>
                     </div>
                   ))}
                 </div>
@@ -194,7 +194,7 @@ const Volunteer = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#292B87] focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#330066] focus:border-transparent"
                   style={{ fontFamily: 'Open Sans, sans-serif' }}
                   placeholder={language === 'fr' ? 'Dites-nous en plus sur votre motivation...' : 'Tell us more about your motivation...'}
                 />
@@ -204,7 +204,7 @@ const Volunteer = () => {
               <div className="text-center">
                 <button
                   type="submit"
-                  className="bg-[#292B87] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0090D1] transition-all duration-200 transform hover:scale-105"
+                  className="bg-[#330066] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#330066]/80 transition-all duration-200 transform hover:scale-105"
                   style={{ fontFamily: 'Open Sans, sans-serif' }}
                 >
                   {language === 'fr' ? 'Envoyer ma candidature' : 'Submit Application'}
@@ -222,7 +222,7 @@ const Volunteer = () => {
               }
             </p>
             <div className="space-y-2">
-              <p className="text-[#292B87] font-semibold">coordinator@alexandreteo.ca</p>
+              <p className="text-[#330066] font-semibold">coordinator@alexandreteo.ca</p>
               <p className="text-gray-600">(514) 555-0123</p>
             </div>
           </div>
