@@ -52,6 +52,7 @@ const Header = () => {
     { id: 'about', label: t('about', language) },
     { id: 'citizen-vote', label: language === 'fr' ? 'Vote Citoyen' : 'Citizen Vote' },
     { id: 'news', label: 'Médias' },
+    { id: 'volunteer', label: language === 'fr' ? 'Bénévole' : 'Volunteer' },
   ];
 
   return (

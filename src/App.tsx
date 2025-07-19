@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import News from './components/News';
 import CitizenVote from './components/CitizenVote';
+import Volunteer from './components/Volunteer';
 import Footer from './components/Footer';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
       <About />
       <CitizenVote />
       <News />
+      <Volunteer />
       <Footer />
     </div>
   );

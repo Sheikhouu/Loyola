@@ -1,230 +1,123 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Heart, Users, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { t } from '../translations';
 
 const Volunteer = () => {
   const { language } = useLanguage();
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    interests: [] as string[],
-    message: ''
-  });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+  const handleVolunteerClick = () => {
+    // Lien vers le formulaire officiel d'Ensemble Montréal
+    window.open('https://www.ensemblemontreal.ca/volunteer', '_blank');
   };
-
-  const handleInterestChange = (interest: string) => {
-    setFormData(prev => ({
-      ...prev,
-      interests: prev.interests.includes(interest)
-        ? prev.interests.filter(i => i !== interest)
-        : [...prev.interests, interest]
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    
-    // Reset form
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      interests: [],
-      message: ''
-    });
-    
-    // Show success message or redirect
-    alert(language === 'fr' ? 'Merci ! Nous vous contacterons bientôt.' : 'Thank you! We\'ll be in touch soon.');
-  };
-
-  const interests = [
-    {
-      id: 'canvassing',
-      label: language === 'fr' ? 'Porte-à-porte' : 'Door-to-door canvassing',
-      description: language === 'fr' ? 'Rencontrer les électeurs dans le quartier' : 'Meet voters in the neighborhood'
-    },
-    {
-      id: 'events',
-      label: language === 'fr' ? 'Organisation d\'événements' : 'Event organization',
-      description: language === 'fr' ? 'Aider à organiser des événements de campagne' : 'Help organize campaign events'
-    },
-    {
-      id: 'phone-banking',
-      label: language === 'fr' ? 'Appels téléphoniques' : 'Phone banking',
-      description: language === 'fr' ? 'Contacter les électeurs par téléphone' : 'Contact voters by phone'
-    },
-    {
-      id: 'digital',
-      label: language === 'fr' ? 'Médias sociaux' : 'Social media',
-      description: language === 'fr' ? 'Aider avec les médias sociaux et le marketing numérique' : 'Help with social media and digital marketing'
-    }
-  ];
 
   return (
-    <section id="volunteer" className="py-20 bg-gray-50">
+    <section id="volunteer" className="py-24 bg-gradient-to-br from-[#330066] to-[#330066]/90">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#330066] mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              {language === 'fr' ? 'Bénévolat' : 'Volunteer'}
-            </h2>
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-              {language === 'fr' 
-                ? 'Votre engagement peut faire la différence dans notre communauté. Ensemble, construisons un avenir meilleur pour Loyola.'
-                : 'Your commitment can make a difference in our community. Together, let\'s build a better future for Loyola.'
-              }
-            </p>
-          </div>
-
-          {/* Volunteer Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Personal Information */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                    {language === 'fr' ? 'Prénom' : 'First Name'} *
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#330066] focus:border-transparent"
-                    style={{ fontFamily: 'Open Sans, sans-serif' }}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                    {language === 'fr' ? 'Nom de famille' : 'Last Name'} *
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#330066] focus:border-transparent"
-                    style={{ fontFamily: 'Open Sans, sans-serif' }}
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    {language === 'fr' ? 'Adresse courriel' : 'Email Address'} *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#330066] focus:border-transparent"
-                    style={{ fontFamily: 'Open Sans, sans-serif' }}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    {language === 'fr' ? 'Numéro de téléphone' : 'Phone Number'}
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#330066] focus:border-transparent"
-                    style={{ fontFamily: 'Open Sans, sans-serif' }}
-                  />
-                </div>
-          </div>
+        <div className="max-w-4xl mx-auto text-center">
           
-              {/* Interests */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-4">
-                  {language === 'fr' ? 'Comment aimeriez-vous contribuer ?' : 'How would you like to contribute?'}
-                </label>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {interests.map((interest) => (
-                    <div key={interest.id} className="flex items-start space-x-3">
-                      <input
-                        type="checkbox"
-                        id={interest.id}
-                        checked={formData.interests.includes(interest.id)}
-                        onChange={() => handleInterestChange(interest.id)}
-                        className="mt-1 h-4 w-4 text-[#330066] focus:ring-[#330066] border-gray-300 rounded"
-                      />
-                      <div>
-                        <label htmlFor={interest.id} className="text-sm font-medium text-gray-900 cursor-pointer">
-                          {interest.label}
-                        </label>
-                        <p className="text-xs text-gray-500 mt-1">{interest.description}</p>
-                  </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Message */}
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  {language === 'fr' ? 'Message (optionnel)' : 'Message (optional)'}
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#330066] focus:border-transparent"
-                  style={{ fontFamily: 'Open Sans, sans-serif' }}
-                  placeholder={language === 'fr' ? 'Dites-nous en plus sur votre motivation...' : 'Tell us more about your motivation...'}
-                />
-              </div>
-
-              {/* Submit Button */}
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="bg-[#330066] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#330066]/80 transition-all duration-200 transform hover:scale-105"
-                  style={{ fontFamily: 'Open Sans, sans-serif' }}
-                >
-                  {language === 'fr' ? 'Envoyer ma candidature' : 'Submit Application'}
-                </button>
-              </div>
-            </form>
-          </div>
-
-          {/* Contact Information */}
-          <div className="mt-12 text-center">
-            <p className="text-gray-600 mb-4" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+          {/* Header */}
+          <div className="mb-16 animate-fade-in">
+            <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-8">
+              <Heart className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              {language === 'fr' ? 'Devenir Bénévole' : 'Become a Volunteer'}
+            </h2>
+            <div className="w-24 h-1 bg-white mx-auto mb-6"></div>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
               {language === 'fr' 
-                ? 'Des questions ? Contactez notre coordinateur bénévole :' 
-                : 'Questions? Contact our volunteer coordinator:'
+                ? 'Rejoignez l\'équipe d\'Ensemble Montréal et participez à la transformation de notre ville'
+                : 'Join the Ensemble Montréal team and participate in transforming our city'
               }
             </p>
-            <div className="space-y-2">
-              <p className="text-[#330066] font-semibold">coordinator@alexandreteo.ca</p>
-              <p className="text-gray-600">(514) 555-0123</p>
+          </div>
+
+          {/* Content */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-white hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Users className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                {language === 'fr' ? 'Engagement Communautaire' : 'Community Engagement'}
+              </h3>
+              <p className="text-white/90 leading-relaxed" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                {language === 'fr' 
+                  ? 'Participez aux événements locaux et aidez à renforcer les liens dans votre communauté'
+                  : 'Participate in local events and help strengthen bonds in your community'
+                }
+              </p>
             </div>
+
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-white hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Heart className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                {language === 'fr' ? 'Impact Local' : 'Local Impact'}
+              </h3>
+              <p className="text-white/90 leading-relaxed" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                {language === 'fr' 
+                  ? 'Contribuez directement à l\'amélioration de la qualité de vie dans votre arrondissement'
+                  : 'Contribute directly to improving quality of life in your borough'
+                }
+              </p>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-white hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <ArrowRight className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                {language === 'fr' ? 'Développement Personnel' : 'Personal Development'}
+              </h3>
+              <p className="text-white/90 leading-relaxed" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                {language === 'fr' 
+                  ? 'Développez vos compétences en leadership et en organisation d\'événements'
+                  : 'Develop your leadership and event organization skills'
+                }
+              </p>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="bg-white/10 backdrop-blur-sm p-12 rounded-3xl border border-white/20">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              {language === 'fr' ? 'Prêt à vous engager ?' : 'Ready to get involved?'}
+            </h3>
+            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+              {language === 'fr' 
+                ? 'Rejoignez l\'équipe d\'Ensemble Montréal et participez à la campagne électorale. Votre aide fait la différence !'
+                : 'Join the Ensemble Montréal team and participate in the electoral campaign. Your help makes a difference!'
+              }
+            </p>
+            
+            <button
+              onClick={handleVolunteerClick}
+              className="group bg-white text-[#330066] px-8 py-4 rounded-full font-bold text-lg hover:bg-white/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center mx-auto"
+              style={{ fontFamily: 'Montserrat, sans-serif' }}
+            >
+              {language === 'fr' ? 'Devenir Bénévole' : 'Become a Volunteer'}
+              <ArrowRight className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
+            
+            <p className="text-sm text-white/70 mt-4" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+              {language === 'fr' 
+                ? 'Vous serez redirigé vers le formulaire officiel d\'Ensemble Montréal'
+                : 'You will be redirected to the official Ensemble Montréal form'
+              }
+            </p>
+          </div>
+
+          {/* Additional Info */}
+          <div className="mt-12 text-white/80">
+            <p className="text-sm" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+              {language === 'fr' 
+                ? 'Pour plus d\'informations sur le bénévolat, contactez-nous directement'
+                : 'For more information about volunteering, contact us directly'
+              }
+            </p>
           </div>
         </div>
       </div>
