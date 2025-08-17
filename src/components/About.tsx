@@ -1,10 +1,11 @@
 import React from 'react';
-import { MapPin, Calendar, Briefcase, GraduationCap, Heart, Users, Globe, Lightbulb, Target } from 'lucide-react';
+import { Briefcase, GraduationCap, Heart, Users, Globe, Lightbulb, Target } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { t } from '../translations';
+// import { t } from '../translations';
 
 const About = () => {
-  const { language } = useLanguage();
+	const { language } = useLanguage();
+	const mainVideoRef = React.useRef<HTMLVideoElement>(null);
 
   const personalInfo = [
     {
@@ -65,32 +66,35 @@ const About = () => {
                   {language === 'fr' ? 'Pourquoi Alexandre Teodoresco ?' : 'Why Alexandre Teodoresco?'}
                 </h3>
                 
-                <div className="space-y-6 text-[#1C1C1C]" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                  <p className="text-lg leading-relaxed">
-                    {language === 'fr' 
-                      ? 'Alexandre Teodoresco possède le profil parfait pour représenter le district de Loyola à Côte-des-Neiges. Fort d\'une double expérience dans l\'innovation, la culture et le développement économique tant au niveau local qu\'international, il propose une vision moderne et pragmatique qui répond spécifiquement aux besoins de ses concitoyens.'
-                      : 'Alexandre Teodoresco has the perfect profile to represent the Loyola district in Côte-des-Neiges. With dual experience in innovation, culture and economic development at both local and international levels, he offers a modern and pragmatic vision that specifically addresses the needs of his fellow citizens.'
-                    }
-                  </p>
-                  <p className="text-lg leading-relaxed">
-                    {language === 'fr' 
-                      ? 'En somme, Alexandre Teodoresco combine expertise, ouverture et leadership pour porter la voix de Loyola à l\'Hôtel de Ville et bâtir un avenir solidaire et innovant pour Côte-des-Neiges.'
-                      : 'In short, Alexandre Teodoresco combines expertise, openness and leadership to carry Loyola\'s voice to City Hall and build a solidary and innovative future for Côte-des-Neiges.'
-                    }
-                  </p>
-            </div>
+				<div className="space-y-6 text-[#1C1C1C]" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+					<p className="text-lg leading-relaxed">
+						{language === 'fr' 
+							? 'Alexandre Teodoresco possède le profil parfait pour représenter le district de Loyola. Fort d\'une double expérience dans l\'innovation, la culture et le développement économique tant au niveau local qu\'international, il propose une vision moderne et pragmatique qui répond spécifiquement aux besoins de ses concitoyens.'
+							: "Alexandre Teodoresco has the perfect profile to represent the Loyola district. With dual experience in innovation, culture and economic development at both local and international levels, he offers a modern and pragmatic vision that specifically addresses the needs of his fellow citizens."
+						}
+					</p>
+					<p className="text-lg leading-relaxed">
+						{language === 'fr' 
+							? 'En somme, Alexandre Teodoresco combine expertise, ouverture et leadership pour porter la voix de Loyola à l\'Hôtel de Ville et bâtir un avenir de qualité pour l’arrondissement de Côte-des-Neiges - NDG, basé sur l’innovation et la qualité de vie.'
+							: "In short, Alexandre Teodoresco combines expertise, openness and leadership to carry Loyola's voice to City Hall and build a high-quality future for the Côte-des-Neiges–NDG borough, based on innovation and quality of life."
+						}
+					</p>
+			</div>
           </div>
 
               <div className="relative animate-slide-up-delay">
                 <div className="w-full h-96 bg-[#330066] rounded-3xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-500 overflow-hidden">
-                  <video
-                    src="https://res.cloudinary.com/dznkbutnm/video/upload/v1752920711/WhatsApp_Vid%C3%A9o_2025-07-15_%C3%A0_19.16.34_e844e118_y4ys6q.mp4"
-                    className="w-full h-full object-cover"
-                    controls
-                    loop
-                    muted
-                    playsInline
-                  />
+					<video
+						ref={mainVideoRef}
+						src="https://res.cloudinary.com/dznkbutnm/video/upload/v1752920711/WhatsApp_Vid%C3%A9o_2025-07-15_%C3%A0_19.16.34_e844e118_y4ys6q.mp4"
+						className="w-full h-full object-cover"
+						controls
+						loop
+						muted
+						playsInline
+						preload="metadata"
+						onLoadedMetadata={() => { if (mainVideoRef.current) { mainVideoRef.current.currentTime = 1; } }}
+					/>
                   <div className="absolute inset-0 bg-[#330066]/20 flex items-center justify-center pointer-events-none">
                     
                   </div>
@@ -104,12 +108,12 @@ const About = () => {
                 <h3 className="text-3xl md:text-4xl font-bold text-[#330066] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                   {language === 'fr' ? 'Notre Mission avec Ensemble Montréal' : 'Our Mission with Ensemble Montréal'}
                 </h3>
-                <p className="text-lg text-[#1C1C1C]/80 max-w-3xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                  {language === 'fr' 
-                    ? 'Ensemble, Alexandre et Soraya Martinez Ferrada travaillent pour un Montréal plus inclusif, innovant et durable'
-                    : 'Together, Alexandre and Soraya Martinez Ferrada work for a more inclusive, innovative and sustainable Montreal'
-                  }
-                </p>
+				<p className="text-lg text-[#1C1C1C]/80 max-w-3xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+					{language === 'fr' 
+						? 'Ensemble, Alexandre et Soraya Martinez Ferrada travaillent pour un Montréal plus inclusif, innovant et efficace'
+						: 'Together, Alexandre and Soraya Martinez Ferrada work for a more inclusive, innovative and efficient Montreal'
+					}
+				</p>
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -118,26 +122,26 @@ const About = () => {
                     {language === 'fr' ? 'Une Vision Partagée' : 'A Shared Vision'}
                   </h4>
                   
-                  <div className="space-y-4 text-[#1C1C1C]" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                    <p className="text-lg leading-relaxed">
-                      {language === 'fr' 
-                        ? 'Alexandre Teodoresco s\'engage aux côtés de Soraya Martinez Ferrada, cheffe d\'Ensemble Montréal et candidate à la mairie, pour porter une vision commune de transformation sociale et économique.'
-                        : 'Alexandre Teodoresco commits alongside Soraya Martinez Ferrada, leader of Ensemble Montréal and mayoral candidate, to carry a shared vision of social and economic transformation.'
-                      }
-                    </p>
-                    <p className="text-lg leading-relaxed">
-                      {language === 'fr' 
-                        ? 'Cette collaboration s\'appuie sur des valeurs fortes : l\'innovation sociale, la transition numérique, la co-construction de solutions et l\'engagement communautaire.'
-                        : 'This collaboration is based on strong values: social innovation, digital transition, co-construction of solutions and community engagement.'
-                      }
-                    </p>
-                    <p className="text-lg leading-relaxed">
-                      {language === 'fr' 
-                        ? 'Ensemble, ils défendent les intérêts de Loyola et de tous les Montréalais pour bâtir une ville plus équitable et prospère.'
-                        : 'Together, they defend the interests of Loyola and all Montrealers to build a more equitable and prosperous city.'
-                      }
-                    </p>
-                  </div>
+					<div className="space-y-4 text-[#1C1C1C]" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+						<p className="text-lg leading-relaxed">
+							{language === 'fr' 
+								? 'Alexandre Teodoresco s\'engage aux côtés de Soraya Martinez Ferrada, cheffe d\'Ensemble Montréal et candidate à la mairie, pour porter une vision commune de transformation sociale et économique.'
+								: 'Alexandre Teodoresco commits alongside Soraya Martinez Ferrada, leader of Ensemble Montréal and mayoral candidate, to carry a shared vision of social and economic transformation.'
+							}
+						</p>
+						<p className="text-lg leading-relaxed">
+							{language === 'fr' 
+								? "Cette collaboration s'appuie sur des valeurs fortes : l'innovation, la transition numérique, la co-construction de solutions et l'impact positif dans nos communautés."
+								: 'This collaboration is based on strong values: innovation, digital transition, co-construction of solutions, and positive impact in our communities.'
+							}
+						</p>
+						<p className="text-lg leading-relaxed">
+							{language === 'fr' 
+								? 'Ensemble, ils défendent les intérêts de Loyola et de tous les Montréalais pour bâtir une ville plus innovante, prospère et efficace.'
+								: 'Together, they defend the interests of Loyola and all Montrealers to build a more innovative, prosperous and efficient city.'
+							}
+						</p>
+					</div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -182,9 +186,9 @@ const About = () => {
               {/* Vidéo de présentation */}
               <div className="mt-12">
                 <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105">
-                  <video
+					  <video
                     src="https://res.cloudinary.com/dznkbutnm/video/upload/v1752920709/AQOhssr5Ur4FjbGdVE682fFMiLZtVAMryhFxC7qGttZYreKdGx7R59EYgCnQ1i20Rox5OxEaIU064L9jgg38kgmsM54GaGyz1u-A8lo_mnakkj.mp4"
-                    className="w-full h-64 object-cover"
+					    className="w-full h-64 object-contain bg-black"
                     controls
                     loop
                     muted
@@ -234,17 +238,17 @@ const About = () => {
                         }
                       </p>
                     </div>
-                    <div className="p-4 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
-                      <h4 className="font-bold text-[#330066] mb-2">
-                        {language === 'fr' ? 'Fondateur de la Middle East Trade Development Agency' : 'Founder of the Middle East Trade Development Agency'}
-                      </h4>
-                      <p className="text-sm leading-relaxed">
-                        {language === 'fr' 
-                          ? 'Accompagnement d\'organisations dans le développement de partenariats, la diversification économique et l\'innovation.'
-                          : 'Supporting organizations in partnership development, economic diversification and innovation.'
-                        }
-                </p>
-              </div>
+					<div className="p-4 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
+						<h4 className="font-bold text-[#330066] mb-2">
+							{language === 'fr' ? 'Co-fondateur de RDV NDG' : 'Co-founder of RDV NDG'}
+						</h4>
+						<p className="text-sm leading-relaxed">
+							{language === 'fr' 
+								? "Organisme à but non lucratif qui anime les parcs de NDG et qui gère le chalet du Parc Girouard. Ce travail prouve que nous sommes capables de créer un sentiment de communauté fort basé sur une programmation culturelle et culinaire riche."
+								: 'A non-profit that animates NDG parks and manages the Parc Girouard chalet. This work proves we can create a strong sense of community based on rich cultural and culinary programming.'
+							}
+						</p>
+					</div>
             </div>
           </div>
 
@@ -325,36 +329,36 @@ const About = () => {
                 </svg>
               </div>
               <div className="flex flex-col w-full md:w-[700px] mx-auto">
-                {[
-                  {
-                      year: '2000-2003',
-                      title: language === 'fr' ? 'Baccalauréat en marketing et finance' : 'Bachelor\'s in Marketing and Finance',
-                      description: language === 'fr' 
-                        ? 'HEC Montréal - Formation solide en gestion, stratégie et finances'
-                        : 'HEC Montréal - Solid foundation in management, strategy and finance'
-                    },
-                    {
-                      year: '2003-2010',
-                      title: language === 'fr' ? 'Directeur développement des affaires' : 'Business Development Director',
-                      description: language === 'fr' 
-                        ? 'Ariane Montréal - Animation de réseaux de partenaires et optimisation de la gestion des ressources'
-                        : 'Ariane Montréal - Partner network animation and resource management optimization'
-                    },
-                    {
-                      year: '2010-2018',
-                      title: language === 'fr' ? 'Fondateur Middle East Trade Development Agency' : 'Founder Middle East Trade Development Agency',
-                      description: language === 'fr' 
-                        ? 'Accompagnement d\'organisations dans le développement de partenariats et l\'innovation'
-                        : 'Supporting organizations in partnership development and innovation'
-                    },
-                    {
-                      year: '2018-2024',
-                      title: language === 'fr' ? 'Vice-président Les 7 Doigts' : 'Vice-President Les 7 Doigts',
-                      description: language === 'fr' 
-                        ? 'Leadership dans la transformation numérique et l\'innovation culturelle'
-                        : 'Leadership in digital transformation and cultural innovation'
-                    }
-                  ].map((item, index) => (
+				{[
+						{
+							year: '2018-2024',
+							title: language === 'fr' ? 'Vice-président Les 7 Doigts' : 'Vice-President Les 7 Doigts',
+							description: language === 'fr' 
+								? 'Leadership dans la transformation numérique et l\'innovation culturelle'
+								: 'Leadership in digital transformation and cultural innovation'
+						},
+						{
+							year: '2010-2018',
+							title: language === 'fr' ? 'Co-fondateur de RDV NDG' : 'Co-founder of RDV NDG',
+							description: language === 'fr' 
+								? "Organisme à but non lucratif qui anime les parcs de NDG et qui gère le chalet du Parc Girouard. Ce travail prouve que nous sommes capables de créer un sentiment de communauté fort basé sur une programmation culturelle et culinaire riche."
+								: 'A non-profit that animates NDG parks and manages the Parc Girouard chalet. This work proves we can create a strong sense of community based on rich cultural and culinary programming.'
+						},
+						{
+							year: '2003-2010',
+							title: language === 'fr' ? 'Directeur développement des affaires' : 'Business Development Director',
+							description: language === 'fr' 
+								? 'Ariane Montréal - Animation de réseaux de partenaires et optimisation de la gestion des ressources'
+								: 'Ariane Montréal - Partner network animation and resource management optimization'
+						},
+						{
+							year: '2000-2003',
+							title: language === 'fr' ? 'Baccalauréat en marketing et finance' : "Bachelor's in Marketing and Finance",
+							description: language === 'fr' 
+								? 'HEC Montréal - Formation solide en gestion, stratégie et finances'
+								: 'HEC Montréal - Solid foundation in management, strategy and finance'
+						}
+					].map((item, index) => (
                     <div key={index} className="relative flex md:min-h-[150px] animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
                     {/* Point du zigzag */}
                       <div className={`hidden md:block absolute z-10 ${index % 2 === 0 ? 'left-[10px]' : 'right-[10px]'} top-1/2 -translate-y-1/2 w-7 h-7 bg-[#330066] rounded-full border-4 border-white shadow-lg`}></div>

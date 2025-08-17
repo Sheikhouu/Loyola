@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface PriorityItem {
@@ -105,41 +105,57 @@ const PriorityCard = ({
 const CitizenVote = () => {
   const { language } = useLanguage();
   
-  // Données de base des priorités (sans votes)
-  const basePriorities: Omit<PriorityItem, 'upvotes' | 'downvotes'>[] = [
-    {
-      id: 'homelessness',
-      title: language === 'fr' ? 'Itinérance' : 'Homelessness',
-      description: language === 'fr' 
-        ? 'Solutions pour réduire l\'itinérance et améliorer les services sociaux'
-        : 'Solutions to reduce homelessness and improve social services',
-      category: 'urgent'
-    },
-    {
-      id: 'water-system',
-      title: language === 'fr' ? 'Système des eaux' : 'Water System',
-      description: language === 'fr'
-        ? 'Réflexion et amélioration du système de gestion des eaux'
-        : 'Reflection and improvement of water management system',
-      category: 'important'
-    },
-    {
-      id: 'garbage-service',
-      title: language === 'fr' ? 'Services des éboueurs' : 'Garbage Collection',
-      description: language === 'fr'
-        ? 'Amélioration de la qualité et de la fréquence des services'
-        : 'Improving quality and frequency of collection services',
-      category: 'urgent'
-    },
-    {
-      id: 'sports-fields',
-      title: language === 'fr' ? 'Terrains de sport' : 'Sports Fields',
-      description: language === 'fr'
-        ? 'Construction de nouveaux terrains de soccer, basketball, etc.'
-        : 'Construction of new soccer, basketball fields, etc.',
-      category: 'nice-to-have'
-    }
-  ];
+	// Données de base des priorités (sans votes)
+	const basePriorities: Omit<PriorityItem, 'upvotes' | 'downvotes'>[] = [
+		{
+			id: 'sports-infrastructure',
+			title: language === 'fr' ? 'Infrastructure sportives' : 'Sports infrastructure',
+			description: language === 'fr'
+				? 'Construction de nouvelles installations sportives ( soccer, basketball, hockey, etc. )'
+				: 'Construction of new sports facilities (soccer, basketball, hockey, etc.)',
+			category: 'important'
+		},
+		{
+			id: 'road-safety',
+			title: language === 'fr' ? 'Sécurité routière' : 'Road safety',
+			description: language === 'fr'
+				? 'Mesures pour ralentir la vitesse, diminuer le risque aux intersections'
+				: 'Measures to reduce speed and decrease risk at intersections',
+			category: 'urgent'
+		},
+		{
+			id: 'revitalize-commercial-streets',
+			title: language === 'fr' ? 'Re-dynamiser les artères commerçantes' : 'Revitalize commercial streets',
+			description: language === 'fr'
+				? 'Investir sur Sherbrooke et Somerled pour attirer et maintenir plus de commerçants locaux'
+				: 'Invest in Sherbrooke and Somerled to attract and retain more local businesses',
+			category: 'important'
+		},
+		{
+			id: 'parks',
+			title: language === 'fr' ? 'Parcs' : 'Parks',
+			description: language === 'fr'
+				? 'Investir et mieux maintenir nos parcs existants'
+				: 'Invest in and better maintain our existing parks',
+			category: 'important'
+		},
+		{
+			id: 'city-interface',
+			title: language === 'fr' ? 'Interface avec la ville' : 'Interface with the city',
+			description: language === 'fr'
+				? 'Rendre plus efficaces et plus rapides les interactions avec la Ville et l’arrondissement pour les services.'
+				: 'Make interactions with the City and the borough more efficient and faster for services.',
+			category: 'important'
+		},
+		{
+			id: 'control-spending',
+			title: language === 'fr' ? 'Contrôler les dépenses' : 'Control spending',
+			description: language === 'fr'
+				? 'Ne plus alourdir le fardeaux financier des résidents en contrôlant les dépenses de la Ville'
+				: "Avoid further burdening residents' finances by controlling City spending",
+			category: 'urgent'
+		}
+	];
 
   const [priorities, setPriorities] = useState<PriorityItem[]>([]);
   const [userVotes, setUserVotes] = useState<UserVotes>({});
@@ -352,7 +368,29 @@ const CitizenVote = () => {
                   : 'Share this vote with your neighbors and friends to amplify our community\'s impact.'
                 }
               </p>
-              <button className="bg-white text-[#330066] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 text-sm sm:text-base">
+              <button
+                onClick={() => {
+                  const currentUrl = window.location && window.location.href ? window.location.href : '';
+                  const shareData = {
+                    title: language === 'fr' ? 'Vote Citoyen - Loyola' : 'Citizen Vote - Loyola',
+                    text: language === 'fr'
+                      ? 'Votez pour les priorités qui comptent pour Loyola'
+                      : 'Vote for the priorities that matter to Loyola',
+                    url: (currentUrl ? currentUrl.split('#')[0] : '') + '#citizen-vote',
+                  } as ShareData;
+                  if (navigator.share) {
+                    navigator.share(shareData).catch(() => {});
+                  } else {
+                    const urlToCopy = shareData.url ?? ((currentUrl ? currentUrl.split('#')[0] : '') + '#citizen-vote');
+                    navigator.clipboard?.writeText(urlToCopy).then(() => {
+                      alert(language === 'fr' ? 'Lien copié dans le presse-papiers' : 'Link copied to clipboard');
+                    }).catch(() => {
+                      prompt(language === 'fr' ? 'Copiez ce lien:' : 'Copy this link:', urlToCopy);
+                    });
+                  }
+                }}
+                className="bg-white text-[#330066] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-gray-100 transition-all duration-300 text-sm sm:text-base"
+              >
                 {language === 'fr' ? 'Partager le vote' : 'Share Vote'}
               </button>
             </div>

@@ -7,8 +7,8 @@ const Volunteer = () => {
   const { language } = useLanguage();
 
   const handleVolunteerClick = () => {
-    // Lien vers le formulaire officiel d'Ensemble Montréal
-    window.open('https://www.ensemblemontreal.ca/volunteer', '_blank');
+    // Lien vers le formulaire de bénévolat d'Alexandre Teo
+    window.open('https://monelection.org/form/volunteer/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708', '_blank');
   };
 
   return (
