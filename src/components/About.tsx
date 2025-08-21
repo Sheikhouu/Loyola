@@ -12,8 +12,8 @@ const About = () => {
       icon: GraduationCap,
       title: language === 'fr' ? 'Formation' : 'Education',
       description: language === 'fr' 
-        ? 'Baccalauréat en marketing et finance (HEC Montréal, 2000-2003) et formation au Lycée Fustel de Coulange'
-        : 'Bachelor\'s degree in Marketing and Finance (HEC Montréal, 2000-2003) and education at Lycée Fustel de Coulange'
+        ? 'Formation solide en gestion, marketing et finance (HEC Montréal) et au Lycée Fustel de Coulange'
+        : 'Solid foundation in management, marketing and finance (HEC Montréal) and at Lycée Fustel de Coulange'
     },
     {
       icon: Briefcase,
@@ -208,91 +208,78 @@ const About = () => {
               </div>
             </div>
             
-            {/* Section 3 — Experience & Education */}
+            {/* Section 3 — Ce qu'Alexandre peut apporter à Loyola */}
             <div className="bg-white rounded-3xl p-12 shadow-xl hover:shadow-2xl transition-all duration-500 animate-slide-up-delay-2">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-[#330066]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    {language === 'fr' ? 'Parcours professionnel' : 'Professional Background'}
-                  </h3>
-                  <div className="space-y-4 text-[#1C1C1C]" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                    <div className="p-4 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
-                      <h4 className="font-bold text-[#330066] mb-2">
-                        {language === 'fr' ? 'Vice-président au développement stratégique et à l\'innovation chez Les 7 Doigts' : 'Vice-President of Strategic Development and Innovation at Les 7 Doigts'}
-                      </h4>
-                      <p className="text-sm leading-relaxed">
-                        {language === 'fr' 
-                          ? 'Leadership reconnu dans un collectif artistique montréalais de classe mondiale. Expert en transformation numérique et adaptation aux défis contemporains (AR, VR, IA).'
-                          : 'Recognized leadership in a world-class Montreal artistic collective. Expert in digital transformation and adaptation to contemporary challenges (AR, VR, AI).'
-                        }
-                      </p>
-                    </div>
-                    <div className="p-4 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
-                      <h4 className="font-bold text-[#330066] mb-2">
-                        {language === 'fr' ? 'Coprésident de E-AI (Entertainment & AI)' : 'Co-President of E-AI (Entertainment & AI)'}
-                      </h4>
-                      <p className="text-sm leading-relaxed">
-                        {language === 'fr' 
-                          ? 'Création de passerelles entre artistes, créateurs et nouvelles technologies. Engagement actif sur l\'inclusion de l\'intelligence artificielle dans le développement culturel.'
-                          : 'Creating bridges between artists, creators and new technologies. Active engagement on the inclusion of artificial intelligence in cultural development.'
-                        }
-                      </p>
-                    </div>
-					<div className="p-4 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
-						<h4 className="font-bold text-[#330066] mb-2">
-							{language === 'fr' ? 'Co-fondateur de RDV NDG' : 'Co-founder of RDV NDG'}
-						</h4>
-						<p className="text-sm leading-relaxed">
-							{language === 'fr' 
-								? "Organisme à but non lucratif qui anime les parcs de NDG et qui gère le chalet du Parc Girouard. Ce travail prouve que nous sommes capables de créer un sentiment de communauté fort basé sur une programmation culturelle et culinaire riche."
-								: 'A non-profit that animates NDG parks and manages the Parc Girouard chalet. This work proves we can create a strong sense of community based on rich cultural and culinary programming.'
-							}
-						</p>
-					</div>
-            </div>
-          </div>
-
-                <div className="space-y-6">
-                  <h3 className="text-2xl font-bold text-[#330066]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                    {language === 'fr' ? 'Ce qu\'Alexandre peut apporter à Loyola' : 'What Alexandre can bring to Loyola'}
-                    </h3>
-                  <div className="space-y-4 text-[#1C1C1C]" style={{ fontFamily: 'Open Sans, sans-serif' }}>
-                    <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
-                      <Lightbulb className="w-5 h-5 text-[#330066] mt-1 flex-shrink-0" />
-                      <p className="text-sm leading-relaxed">
+              <div className="text-center mb-12">
+                <h3 className="text-3xl md:text-4xl font-bold text-[#330066] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                  {language === 'fr' ? 'Ce qu\'Alexandre peut apporter à Loyola' : 'What Alexandre can bring to Loyola'}
+                </h3>
+                <p className="text-lg text-[#1C1C1C]/80 max-w-3xl mx-auto" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                  {language === 'fr' 
+                    ? 'Des compétences et une vision pour transformer notre quartier'
+                    : 'Skills and vision to transform our neighborhood'
+                  }
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="flex items-start space-x-4 p-6 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
+                  <Lightbulb className="w-8 h-8 text-[#330066] mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-lg font-bold text-[#330066] mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      {language === 'fr' ? 'Vision globale' : 'Global vision'}
+                    </h4>
+                    <p className="text-[#1C1C1C] leading-relaxed" style={{ fontFamily: 'Open Sans, sans-serif' }}>
                       {language === 'fr' 
-                          ? 'Un pont entre les réalités locales et les meilleures pratiques internationales.'
-                          : 'A bridge between local realities and international best practices.'
+                        ? 'Un pont entre les réalités locales et les meilleures pratiques internationales.'
+                        : 'A bridge between local realities and international best practices.'
                       }
                     </p>
                   </div>
-                    <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
-                      <Heart className="w-5 h-5 text-[#330066] mt-1 flex-shrink-0" />
-                      <p className="text-sm leading-relaxed">
-                        {language === 'fr' 
-                          ? 'Un engagement sincère envers l\'innovation sociale, la transition numérique et la culture.'
-                          : 'A sincere commitment to social innovation, digital transition and culture.'
-                        }
-                      </p>
-                    </div>
-                    <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
-                      <Users className="w-5 h-5 text-[#330066] mt-1 flex-shrink-0" />
-                      <p className="text-sm leading-relaxed">
-                        {language === 'fr' 
-                          ? 'Une vision orientée vers la co-construction de solutions, l\'inclusion et la participation citoyenne.'
-                          : 'A vision oriented towards co-construction of solutions, inclusion and citizen participation.'
-                        }
-                        </p>
-                      </div>
-                    <div className="flex items-start space-x-3 p-3 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
-                      <Target className="w-5 h-5 text-[#330066] mt-1 flex-shrink-0" />
-                      <p className="text-sm leading-relaxed">
-                        {language === 'fr' 
-                          ? 'La capacité de défendre les intérêts de Loyola auprès des instances municipales.'
-                          : 'The ability to defend Loyola\'s interests with municipal authorities.'
-                        }
-                      </p>
-                    </div>
+                </div>
+                
+                <div className="flex items-start space-x-4 p-6 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
+                  <Heart className="w-8 h-8 text-[#330066] mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-lg font-bold text-[#330066] mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      {language === 'fr' ? 'Engagement authentique' : 'Authentic commitment'}
+                    </h4>
+                    <p className="text-[#1C1C1C] leading-relaxed" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                      {language === 'fr' 
+                        ? 'Un engagement sincère envers l\'innovation sociale, la transition numérique et la culture.'
+                        : 'A sincere commitment to social innovation, digital transition and culture.'
+                      }
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4 p-6 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
+                  <Users className="w-8 h-8 text-[#330066] mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-lg font-bold text-[#330066] mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      {language === 'fr' ? 'Approche collaborative' : 'Collaborative approach'}
+                    </h4>
+                    <p className="text-[#1C1C1C] leading-relaxed" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                      {language === 'fr' 
+                        ? 'Une vision orientée vers la co-construction de solutions, l\'inclusion et la participation citoyenne.'
+                        : 'A vision oriented towards co-construction of solutions, inclusion and citizen participation.'
+                      }
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4 p-6 rounded-lg hover:bg-[#330066]/5 transition-colors duration-300">
+                  <Target className="w-8 h-8 text-[#330066] mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-lg font-bold text-[#330066] mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                      {language === 'fr' ? 'Représentation efficace' : 'Effective representation'}
+                    </h4>
+                    <p className="text-[#1C1C1C] leading-relaxed" style={{ fontFamily: 'Open Sans, sans-serif' }}>
+                      {language === 'fr' 
+                        ? 'La capacité de défendre les intérêts de Loyola auprès des instances municipales.'
+                        : 'The ability to defend Loyola\'s interests with municipal authorities.'
+                      }
+                    </p>
                   </div>
                 </div>
               </div>
@@ -351,13 +338,6 @@ const About = () => {
 								? 'Ariane Montréal - Animation de réseaux de partenaires et optimisation de la gestion des ressources'
 								: 'Ariane Montréal - Partner network animation and resource management optimization'
 						},
-						{
-							year: '2000-2003',
-							title: language === 'fr' ? 'Baccalauréat en marketing et finance' : "Bachelor's in Marketing and Finance",
-							description: language === 'fr' 
-								? 'HEC Montréal - Formation solide en gestion, stratégie et finances'
-								: 'HEC Montréal - Solid foundation in management, strategy and finance'
-						}
 					].map((item, index) => (
                     <div key={index} className="relative flex md:min-h-[150px] animate-slide-up" style={{ animationDelay: `${index * 0.2}s` }}>
                     {/* Point du zigzag */}
