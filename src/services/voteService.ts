@@ -6,6 +6,10 @@ export class VoteService {
   
   // Soumettre un vote
   static async submitVote(priorityId: string, voteType: 'up' | 'down'): Promise<{ success: boolean; error?: string }> {
+    if (!supabase) {
+      return { success: false, error: 'Service de vote non disponible' };
+    }
+    
     try {
       const fingerprint = generateFingerprint();
       const userAgent = navigator.userAgent;
@@ -62,6 +66,8 @@ export class VoteService {
   
   // Récupérer le vote d'un utilisateur pour une priorité
   static async getUserVote(priorityId: string, fingerprint?: string): Promise<Vote | null> {
+    if (!supabase) return null;
+    
     try {
       const fp = fingerprint || generateFingerprint();
       
@@ -82,6 +88,8 @@ export class VoteService {
   
   // Récupérer tous les votes de l'utilisateur
   static async getUserVotes(fingerprint?: string): Promise<{ [priorityId: string]: 'up' | 'down' }> {
+    if (!supabase) return {};
+    
     try {
       const fp = fingerprint || generateFingerprint();
       
@@ -106,6 +114,8 @@ export class VoteService {
   
   // Récupérer les statistiques de tous les votes
   static async getVoteStats(): Promise<{ [priorityId: string]: { upvotes: number; downvotes: number } }> {
+    if (!supabase) return {};
+    
     try {
       const { data, error } = await supabase
         .from('vote_stats')
@@ -130,6 +140,10 @@ export class VoteService {
   
   // Écouter les changements de votes en temps réel
   static subscribeToVoteChanges(callback: (stats: { [priorityId: string]: { upvotes: number; downvotes: number } }) => void) {
+    if (!supabase) {
+      return { unsubscribe: () => {} };
+    }
+    
     const subscription = supabase
       .channel('vote_changes')
       .on('postgres_changes', {
