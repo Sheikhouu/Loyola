@@ -139,8 +139,17 @@
 
 ---
 
+## 🚀 Fonctionnalités Récentes
+
+- ✅ **Vote Citoyen en temps réel** - Système de vote fonctionnel avec base de données Supabase
+- ✅ **Interface responsive optimisée** - Expérience mobile améliorée  
+- ✅ **Gestion d'erreur robuste** - Application stable même en cas de problème réseau
+- ✅ **Déploiement Netlify** - Site en production sur alexforloyola.com
+
+---
+
 ## 👥 Maintainer
 
-- **Contact campagne** : alexandre.teo@ensemblemtl.org  
+- **Contact campagne** : alexandre.teodoresco@ensemblemtl.org  
 - **Web team** : [Nom de l’agence ou développeur]  
 - **Mis à jour** : 05 juillet 2025
