@@ -61,31 +61,31 @@ const Hero = () => {
     </section>
       
       {/* Hero Mobile */}
-      <section className="md:hidden relative min-h-screen flex items-center justify-center bg-white overflow-hidden pt-20">
+      <section className="md:hidden relative min-h-screen flex items-center justify-center bg-white overflow-hidden pt-16">
         {/* Image de fond */}
         <div className="absolute inset-0 w-full h-full">
           <img 
             src={heroImage}
             alt={language === 'fr' ? 'Campagne Alexandre Teo' : 'Alexandre Teo Campaign'}
-            className="w-full h-full object-cover scale-102 transform transition-transform duration-1000 ease-out"
+            className="w-full h-full object-cover object-center transform transition-transform duration-1000 ease-out"
           />
           
           {/* Overlay */}
           <div className="absolute inset-0 bg-black/5"></div>
           
-          {/* SVG en haut */}
-          <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-10 animate-fade-in-down">
+          {/* SVG en haut avec meilleur positionnement */}
+          <div className="absolute top-20 left-1/2 transform -translate-x-1/2 z-10 animate-fade-in-down">
             <img 
               src={heroSvg}
               alt={language === 'fr' ? 'Logo Français' : 'English Logo'}
-              className="h-16 w-auto drop-shadow-lg"
+              className="h-12 sm:h-16 w-auto drop-shadow-lg"
             />
           </div>
           
-          {/* Bouton "Faire un don" */}
-          <div className="absolute bottom-20 left-4 z-10 animate-fade-in-up">
+          {/* Bouton "Faire un don" repositionné */}
+          <div className="absolute bottom-24 left-4 right-4 z-10 animate-fade-in-up flex justify-start">
             <button 
-              className="relative bg-gradient-to-r from-[#330066] via-[#4a1a8a] to-[#330066] hover:from-[#4a1a8a] hover:via-[#5a2a9a] hover:to-[#4a1a8a] text-white px-6 py-3 rounded-xl font-bold text-sm transition-all duration-700 shadow-2xl hover:shadow-[0_25px_50px_-12px_rgba(51,0,102,0.6)] hover:scale-110 transform animate-pulse hover:animate-none border-2 border-white/20 hover:border-white/40 backdrop-blur-sm overflow-hidden group"
+              className="relative bg-gradient-to-r from-[#330066] via-[#4a1a8a] to-[#330066] hover:from-[#4a1a8a] hover:via-[#5a2a9a] hover:to-[#4a1a8a] text-white px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-700 shadow-2xl hover:shadow-[0_25px_50px_-12px_rgba(51,0,102,0.6)] hover:scale-105 transform animate-pulse hover:animate-none border-2 border-white/20 hover:border-white/40 backdrop-blur-sm overflow-hidden group"
               onClick={() => window.open('https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708', '_blank')}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
@@ -98,8 +98,8 @@ const Hero = () => {
             </button>
           </div>
           
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 animate-fade-in-up">
+          {/* Scroll Indicator repositionné */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-fade-in-up">
             <div className="w-5 h-8 border-2 border-white rounded-full flex justify-center shadow-lg backdrop-blur-sm bg-white/10">
               <div className="w-1 h-2 bg-white rounded-full mt-1.5 animate-bounce"></div>
             </div>
