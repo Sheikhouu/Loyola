@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
 import News from './components/News';
-import CitizenVote from './components/CitizenVote';
+import CitizenVoteReal from './components/CitizenVoteReal';
 import Volunteer from './components/Volunteer';
 import Footer from './components/Footer';
 
@@ -56,7 +56,7 @@ function App() {
       
       <About />
       <Volunteer />
-      <CitizenVote />
+      <CitizenVoteReal />
       <News />
       <Footer />
     </div>
