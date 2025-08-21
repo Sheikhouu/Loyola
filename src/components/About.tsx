@@ -83,7 +83,7 @@ const About = () => {
           </div>
 
               <div className="relative animate-slide-up-delay">
-                <div className="w-full h-96 bg-[#330066] rounded-3xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-500 overflow-hidden">
+                <div className="w-full h-64 sm:h-80 md:h-96 bg-[#330066] rounded-3xl shadow-2xl flex items-center justify-center transform hover:scale-105 transition-transform duration-500 overflow-hidden">
 					<video
 						ref={mainVideoRef}
 						src="https://res.cloudinary.com/dznkbutnm/video/upload/v1752920711/WhatsApp_Vid%C3%A9o_2025-07-15_%C3%A0_19.16.34_e844e118_y4ys6q.mp4"
@@ -149,7 +149,7 @@ const About = () => {
                     <img 
                       src="https://res.cloudinary.com/dznkbutnm/image/upload/v1752920708/WhatsApp_Image_2025-07-11_%C3%A0_21.55.10_d70afc26_dwk2l9.jpg"
                       alt={language === 'fr' ? 'Alexandre et Soraya - Ensemble Montréal' : 'Alexandre and Soraya - Ensemble Montréal'}
-                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                       <div className="p-6 text-white">
@@ -167,7 +167,7 @@ const About = () => {
                     <img 
                       src="https://res.cloudinary.com/dznkbutnm/image/upload/v1752920706/WhatsApp_Image_2025-07-14_%C3%A0_21.09.39_ac1f770e_mclhhc.jpg"
                       alt={language === 'fr' ? 'Engagement Communautaire' : 'Community Engagement'}
-                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                       <div className="p-6 text-white">
@@ -188,7 +188,7 @@ const About = () => {
                 <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105">
 					  <video
                     src="https://res.cloudinary.com/dznkbutnm/video/upload/v1752920709/AQOhssr5Ur4FjbGdVE682fFMiLZtVAMryhFxC7qGttZYreKdGx7R59EYgCnQ1i20Rox5OxEaIU064L9jgg38kgmsM54GaGyz1u-A8lo_mnakkj.mp4"
-					    className="w-full h-64 object-contain bg-black"
+					    className="w-full h-48 sm:h-56 md:h-64 object-contain bg-black"
                     controls
                     loop
                     muted
@@ -385,7 +385,7 @@ const About = () => {
                   <img 
                     src="https://res.cloudinary.com/dznkbutnm/image/upload/v1752932694/WhatsApp_Image_2025-07-05_%C3%A0_12.48.24_c29e2e9e_jrkqxw.jpg"
                     alt={language === 'fr' ? 'Vie communautaire à Loyola' : 'Community life in Loyola'}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                     <div className="p-6 text-white">
@@ -403,7 +403,7 @@ const About = () => {
                   <img 
                     src="https://res.cloudinary.com/dznkbutnm/image/upload/v1752920705/WhatsApp_Image_2025-07-18_%C3%A0_18.16.05_db78dcb1_fwpjpe.jpg"
                     alt={language === 'fr' ? 'Alexandre avec la communauté' : 'Alexandre with the community'}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                     <div className="p-6 text-white">
@@ -420,7 +420,7 @@ const About = () => {
                 <div className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:scale-105">
                   <video
                     src="https://res.cloudinary.com/dznkbutnm/video/upload/v1752920710/WhatsApp_Vid%C3%A9o_2025-07-13_%C3%A0_23.51.15_32edd6ab_e0qpwr.mp4"
-                    className="w-full h-64 object-cover"
+                    className="w-full h-48 sm:h-56 md:h-64 object-cover"
                     controls
                     loop
                     muted
