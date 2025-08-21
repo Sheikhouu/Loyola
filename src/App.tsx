@@ -29,7 +29,7 @@ function App() {
       <Hero />
       
       {/* CTA vers CitizenVote */}
-      <section className="py-12 bg-gradient-to-r from-[#330066] to-[#4a1a8a]">
+      <section id="cta-section" className="py-12 bg-gradient-to-r from-[#330066] to-[#4a1a8a]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             {language === 'fr' ? 'Votre voix compte !' : 'Your voice matters!'}

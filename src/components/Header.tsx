@@ -11,24 +11,26 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Sur mobile, le header est toujours visible
-      if (window.innerWidth < 768) {
-        setIsVisible(true);
-        return;
-      }
-      
-      // Sur desktop/tablette, détecte si on a dépassé la hauteur de l'écran (section hero)
-      const heroHeight = window.innerHeight;
       const scrollY = window.scrollY;
       
-      // Affiche le header quand on commence à dépasser la hero section
-      setIsVisible(scrollY > heroHeight - 100); // -100px pour une transition plus douce
+      if (window.innerWidth < 768) {
+        // Sur mobile, le header apparaît après la section CTA
+        const ctaSection = document.getElementById('cta-section');
+        if (ctaSection) {
+          const ctaSectionBottom = ctaSection.offsetTop + ctaSection.offsetHeight;
+          setIsVisible(scrollY > ctaSectionBottom - 50);
+        } else {
+          setIsVisible(false); // Caché par défaut si pas de section CTA
+        }
+      } else {
+        // Sur desktop/tablette, détecte si on a dépassé la hauteur de l'écran (section hero)
+        const heroHeight = window.innerHeight;
+        setIsVisible(scrollY > heroHeight - 100);
+      }
     };
 
-    // Initialiser l'état sur mobile
-    if (window.innerWidth < 768) {
-      setIsVisible(true);
-    }
+    // Initialiser l'état
+    handleScroll();
 
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleScroll);
