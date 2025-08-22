@@ -26,7 +26,20 @@ if (!supabaseUrl || !supabaseAnonKey) {
 
 
 
-export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null
+export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: false
+  },
+  global: {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'X-Client-Info': 'loyola-vote-app'
+    }
+  }
+}) : null
 
 // Types pour TypeScript
 export interface Vote {
