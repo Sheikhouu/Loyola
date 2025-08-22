@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { VoteService } from '../services/voteService';
-import { testSupabaseConnection } from '../lib/supabase';
+import { testSupabaseConnection, testDirectSupabaseAPI } from '../lib/supabase';
 
 interface PriorityItem {
   id: string;
@@ -170,10 +170,24 @@ const CitizenVoteReal = () => {
       try {
         setIsInitialLoading(true);
         
-        // Test de connectivité avant de procéder
-        const isConnected = await testSupabaseConnection();
-        if (!isConnected) {
-          throw new Error('Impossible de se connecter à Supabase - vérifiez la configuration');
+        // Tests de connectivité
+        console.log('🔬 Tests de diagnostic Supabase...');
+        
+        const [isDirectAPIWorking, isClientWorking] = await Promise.all([
+          testDirectSupabaseAPI(),
+          testSupabaseConnection()
+        ]);
+        
+        console.log('📊 Résultats des tests:');
+        console.log('- API directe (fetch):', isDirectAPIWorking ? '✅' : '❌');
+        console.log('- Client Supabase:', isClientWorking ? '✅' : '❌');
+        
+        if (!isDirectAPIWorking && !isClientWorking) {
+          throw new Error('Impossible de se connecter à Supabase - problème de configuration');
+        }
+        
+        if (isDirectAPIWorking && !isClientWorking) {
+          console.warn('⚠️ API directe fonctionne mais pas le client Supabase - problème de configuration client');
         }
         
         // Charger les statistiques et les votes utilisateur en parallèle

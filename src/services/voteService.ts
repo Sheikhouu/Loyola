@@ -123,14 +123,33 @@ export class VoteService {
   
   // Récupérer les statistiques de tous les votes
   static async getVoteStats(): Promise<{ [priorityId: string]: { upvotes: number; downvotes: number } }> {
-    if (!supabase) return {};
+    if (!supabase) {
+      console.error('❌ Client Supabase non disponible dans getVoteStats')
+      return {};
+    }
     
     try {
-      console.log('Tentative de récupération des statistiques de votes...');
+      console.log('🔍 Tentative de récupération des statistiques de votes...');
+      console.log('Client Supabase état:', !!supabase);
+      
+      // Intercepter la requête pour voir les en-têtes
+      const originalFetch = window.fetch;
+      window.fetch = async (...args) => {
+        console.log('🌐 Requête interceptée:', args[0]);
+        if (args[1] && args[1].headers) {
+          console.log('📋 En-têtes de la requête:', args[1].headers);
+        }
+        const result = await originalFetch(...args);
+        console.log('📊 Statut de la réponse:', result.status);
+        return result;
+      };
       
       const { data, error } = await supabase
         .from('vote_stats')
         .select('*');
+        
+      // Restaurer fetch original
+      window.fetch = originalFetch;
         
       if (error) {
         console.error('Erreur Supabase lors de la récupération des stats:', error);
