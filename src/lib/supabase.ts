@@ -12,6 +12,15 @@ export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUr
     params: {
       eventsPerSecond: 10
     }
+  },
+  global: {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  },
+  db: {
+    schema: 'public'
   }
 }) : null
 

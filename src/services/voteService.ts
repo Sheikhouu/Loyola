@@ -92,13 +92,22 @@ export class VoteService {
     
     try {
       const fp = fingerprint || generateFingerprint();
+      console.log('Tentative de récupération des votes utilisateur avec fingerprint:', fp);
       
       const { data, error } = await supabase
         .from('votes')
         .select('priority_id, vote_type')
         .eq('fingerprint', fp);
         
-      if (error) throw error;
+      if (error) {
+        console.error('Erreur Supabase lors de la récupération des votes utilisateur:', error);
+        console.error('Code d\'erreur:', error.code);
+        console.error('Message d\'erreur:', error.message);
+        console.error('Détails:', error.details);
+        throw error;
+      }
+      
+      console.log('Votes utilisateur récupérés avec succès:', data);
       
       const userVotes: { [priorityId: string]: 'up' | 'down' } = {};
       data?.forEach(vote => {
@@ -117,11 +126,21 @@ export class VoteService {
     if (!supabase) return {};
     
     try {
+      console.log('Tentative de récupération des statistiques de votes...');
+      
       const { data, error } = await supabase
         .from('vote_stats')
         .select('*');
         
-      if (error) throw error;
+      if (error) {
+        console.error('Erreur Supabase lors de la récupération des stats:', error);
+        console.error('Code d\'erreur:', error.code);
+        console.error('Message d\'erreur:', error.message);
+        console.error('Détails:', error.details);
+        throw error;
+      }
+      
+      console.log('Statistiques récupérées avec succès:', data);
       
       const stats: { [priorityId: string]: { upvotes: number; downvotes: number } } = {};
       data?.forEach((stat: VoteStats) => {
@@ -134,7 +153,38 @@ export class VoteService {
       return stats;
     } catch (error) {
       console.error('Erreur lors de la récupération des statistiques:', error);
-      return {};
+      
+      // Fallback : calculer les stats depuis la table votes
+      console.log('Tentative de fallback : calcul des stats depuis la table votes...');
+      try {
+        const { data: votesData, error: votesError } = await supabase
+          .from('votes')
+          .select('priority_id, vote_type');
+          
+        if (votesError) {
+          console.error('Erreur lors du fallback:', votesError);
+          return {};
+        }
+        
+        // Calculer les stats manuellement
+        const manualStats: { [priorityId: string]: { upvotes: number; downvotes: number } } = {};
+        votesData?.forEach(vote => {
+          if (!manualStats[vote.priority_id]) {
+            manualStats[vote.priority_id] = { upvotes: 0, downvotes: 0 };
+          }
+          if (vote.vote_type === 'up') {
+            manualStats[vote.priority_id].upvotes++;
+          } else {
+            manualStats[vote.priority_id].downvotes++;
+          }
+        });
+        
+        console.log('Stats calculées manuellement:', manualStats);
+        return manualStats;
+      } catch (fallbackError) {
+        console.error('Erreur lors du fallback:', fallbackError);
+        return {};
+      }
     }
   }
   
