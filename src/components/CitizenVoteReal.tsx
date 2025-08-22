@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { VoteService } from '../services/voteService';
-import { supabase } from '../lib/supabase';
 
 interface PriorityItem {
   id: string;
@@ -170,34 +169,11 @@ const CitizenVoteReal = () => {
       try {
         setIsInitialLoading(true);
         
-        console.log('🔍 Test de connexion Supabase...');
-        
-        // Test de connexion simple
-        if (!supabase) {
-          throw new Error('Client Supabase non initialisé');
-        }
-        
-        // Test de connexion avec une requête simple
-        const { data: testData, error: testError } = await supabase
-          .from('votes')
-          .select('count')
-          .limit(1);
-          
-        if (testError) {
-          console.error('❌ Erreur de connexion Supabase:', testError);
-          throw testError;
-        }
-        
-        console.log('✅ Connexion Supabase réussie');
-        
         // Charger les statistiques et les votes utilisateur en parallèle
         const [voteStats, userVotesData] = await Promise.all([
           VoteService.getVoteStats(),
           VoteService.getUserVotes()
         ]);
-        
-        console.log('📊 Statistiques chargées:', voteStats);
-        console.log('👤 Votes utilisateur chargés:', userVotesData);
         
         // Construire les priorités avec les votes
         const prioritiesWithVotes = basePriorities.map(priority => ({
@@ -211,7 +187,6 @@ const CitizenVoteReal = () => {
         
         // S'abonner aux changements en temps réel
         const subscription = VoteService.subscribeToVoteChanges((newStats) => {
-          console.log('🔄 Mise à jour temps réel reçue:', newStats);
           setPriorities(prev => prev.map(priority => ({
             ...priority,
             upvotes: newStats[priority.id]?.upvotes || 0,
@@ -225,14 +200,7 @@ const CitizenVoteReal = () => {
         };
         
       } catch (error) {
-        console.error('❌ Erreur lors du chargement initial:', error);
-        
-        // Afficher l'erreur à l'utilisateur
-        if (error instanceof Error) {
-          alert(`Erreur de connexion: ${error.message}`);
-        } else {
-          alert('Erreur de connexion inconnue');
-        }
+        console.error('Erreur lors du chargement initial:', error);
       } finally {
         setIsInitialLoading(false);
       }
