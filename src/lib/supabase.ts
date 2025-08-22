@@ -17,46 +17,6 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.log('✅ Variables d\'environnement Supabase correctement chargées')
 }
 
-// Test direct de l'API Supabase avec fetch
-export const testDirectSupabaseAPI = async () => {
-  if (!supabaseUrl || !supabaseAnonKey) {
-    console.error('❌ Variables Supabase manquantes pour test direct')
-    return false
-  }
-  
-  try {
-    console.log('🔍 Test direct API Supabase avec fetch...')
-    
-    const response = await fetch(`${supabaseUrl}/rest/v1/votes?select=count&limit=1`, {
-      method: 'GET',
-      headers: {
-        'apikey': supabaseAnonKey,
-        'Authorization': `Bearer ${supabaseAnonKey}`,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-    
-    console.log('📊 Statut de la réponse directe:', response.status)
-    console.log('📋 En-têtes envoyés:', {
-      'apikey': supabaseAnonKey.substring(0, 20) + '...',
-      'Authorization': `Bearer ${supabaseAnonKey.substring(0, 20)}...`
-    })
-    
-    if (!response.ok) {
-      const errorText = await response.text()
-      console.error('❌ Erreur API directe:', response.status, errorText)
-      return false
-    }
-    
-    const data = await response.json()
-    console.log('✅ Test API direct réussi:', data)
-    return true
-  } catch (error) {
-    console.error('❌ Exception lors du test API direct:', error)
-    return false
-  }
-}
 
 // Fonction de test de connectivité
 export const testSupabaseConnection = async () => {
@@ -90,35 +50,7 @@ export const testSupabaseConnection = async () => {
   }
 }
 
-// Créer le client Supabase avec configuration minimale
-const createSupabaseClient = () => {
-  if (!supabaseUrl || !supabaseAnonKey) {
-    console.error('❌ Variables Supabase manquantes pour créer le client')
-    return null
-  }
-  
-  console.log('🔧 Création du client Supabase...')
-  console.log('URL:', supabaseUrl)
-  console.log('Key (premiers chars):', supabaseAnonKey.substring(0, 20) + '...')
-  
-  try {
-    const client = createClient(supabaseUrl, supabaseAnonKey, {
-      auth: {
-        persistSession: false,
-        autoRefreshToken: false,
-        detectSessionInUrl: false
-      }
-    })
-    
-    console.log('✅ Client Supabase créé avec succès')
-    return client
-  } catch (error) {
-    console.error('❌ Erreur lors de la création du client Supabase:', error)
-    return null
-  }
-}
-
-export const supabase = createSupabaseClient()
+export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null
 
 // Types pour TypeScript
 export interface Vote {
