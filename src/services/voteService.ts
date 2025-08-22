@@ -117,18 +117,42 @@ export class VoteService {
     if (!supabase) return {};
     
     try {
-      const { data, error } = await supabase
+      // D'abord essayer de récupérer depuis vote_stats
+      const { data: statsData, error: statsError } = await supabase
         .from('vote_stats')
         .select('*');
         
-      if (error) throw error;
+      if (!statsError && statsData && statsData.length > 0) {
+        // Si vote_stats contient des données, les utiliser
+        const stats: { [priorityId: string]: { upvotes: number; downvotes: number } } = {};
+        statsData.forEach((stat: VoteStats) => {
+          stats[stat.priority_id] = {
+            upvotes: stat.upvotes,
+            downvotes: stat.downvotes
+          };
+        });
+        return stats;
+      }
       
+      // Fallback : calculer les stats à partir de la table votes
+      console.log('Table vote_stats vide ou inexistante, calcul des stats depuis votes...');
+      const { data: votesData, error: votesError } = await supabase
+        .from('votes')
+        .select('priority_id, vote_type');
+        
+      if (votesError) throw votesError;
+      
+      // Calculer les statistiques manuellement
       const stats: { [priorityId: string]: { upvotes: number; downvotes: number } } = {};
-      data?.forEach((stat: VoteStats) => {
-        stats[stat.priority_id] = {
-          upvotes: stat.upvotes,
-          downvotes: stat.downvotes
-        };
+      votesData?.forEach(vote => {
+        if (!stats[vote.priority_id]) {
+          stats[vote.priority_id] = { upvotes: 0, downvotes: 0 };
+        }
+        if (vote.vote_type === 'up') {
+          stats[vote.priority_id].upvotes++;
+        } else if (vote.vote_type === 'down') {
+          stats[vote.priority_id].downvotes++;
+        }
       });
       
       return stats;
@@ -141,22 +165,69 @@ export class VoteService {
   // Écouter les changements de votes en temps réel
   static subscribeToVoteChanges(callback: (stats: { [priorityId: string]: { upvotes: number; downvotes: number } }) => void) {
     if (!supabase) {
+      console.warn('Client Supabase non disponible, mode hors ligne activé');
       return { unsubscribe: () => {} };
     }
     
-    const subscription = supabase
-      .channel('vote_changes')
-      .on('postgres_changes', {
-        event: '*',
-        schema: 'public',
-        table: 'votes'
-      }, async () => {
-        // Récupérer les nouvelles stats quand il y a un changement
-        const stats = await this.getVoteStats();
-        callback(stats);
-      })
-      .subscribe();
+    try {
+      const subscription = supabase
+        .channel('vote_changes')
+        .on('postgres_changes', {
+          event: '*',
+          schema: 'public',
+          table: 'votes'
+        }, async () => {
+          try {
+            // Récupérer les nouvelles stats quand il y a un changement
+            const stats = await this.getVoteStats();
+            callback(stats);
+          } catch (error) {
+            console.warn('Erreur lors de la mise à jour des stats:', error);
+          }
+        })
+        .subscribe((status) => {
+          if (status === 'SUBSCRIBED') {
+            console.log('Subscription temps réel activée');
+          } else if (status === 'CHANNEL_ERROR') {
+            console.warn('Erreur de subscription temps réel, mode polling activé');
+            // Fallback : polling toutes les 10 secondes
+            const interval = setInterval(async () => {
+              try {
+                const stats = await this.getVoteStats();
+                callback(stats);
+              } catch (error) {
+                console.warn('Erreur lors du polling:', error);
+              }
+            }, 10000);
+            
+            // Retourner un objet qui permet d'arrêter le polling
+            return {
+              unsubscribe: () => {
+                clearInterval(interval);
+              }
+            };
+          }
+        });
+        
+      return subscription;
+    } catch (error) {
+      console.warn('Erreur lors de la création de la subscription, mode polling activé:', error);
       
-    return subscription;
+      // Fallback : polling toutes les 10 secondes
+      const interval = setInterval(async () => {
+        try {
+          const stats = await this.getVoteStats();
+          callback(stats);
+        } catch (error) {
+          console.warn('Erreur lors du polling:', error);
+        }
+      }, 10000);
+      
+      return {
+        unsubscribe: () => {
+          clearInterval(interval);
+        }
+      };
+    }
   }
 }
