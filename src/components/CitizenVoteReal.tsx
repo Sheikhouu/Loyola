@@ -176,7 +176,7 @@ const CitizenVoteReal = () => {
         let userVotesData: { [priorityId: string]: 'up' | 'down' } = {};
         
         try {
-          // Charger les statistiques et les votes utilisateur directement via le client Supabase
+          // Charger directement les données via le client Supabase officiel
           const [stats, votes] = await Promise.all([
             VoteService.getVoteStats(),
             VoteService.getUserVotes()
