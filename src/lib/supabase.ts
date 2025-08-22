@@ -17,7 +17,43 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.log('✅ Variables d\'environnement Supabase correctement chargées')
 }
 
+// Fonction de test de connectivité
+export const testSupabaseConnection = async () => {
+  if (!supabase) {
+    console.error('❌ Client Supabase non initialisé')
+    return false
+  }
+  
+  try {
+    console.log('🔍 Test de connectivité Supabase...')
+    
+    // Test simple avec une requête vers une table publique
+    const { data, error } = await supabase
+      .from('votes')
+      .select('count')
+      .limit(1)
+    
+    if (error) {
+      console.error('❌ Erreur de connectivité Supabase:', error)
+      console.error('Code:', error.code)
+      console.error('Message:', error.message)
+      console.error('Détails:', error.details)
+      return false
+    }
+    
+    console.log('✅ Connectivité Supabase réussie')
+    return true
+  } catch (error) {
+    console.error('❌ Exception lors du test de connectivité:', error)
+    return false
+  }
+}
+
 export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: false,
+    autoRefreshToken: false
+  },
   realtime: {
     params: {
       eventsPerSecond: 10
@@ -26,7 +62,9 @@ export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUr
   global: {
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'apikey': supabaseAnonKey,
+      'Authorization': `Bearer ${supabaseAnonKey}`
     }
   },
   db: {

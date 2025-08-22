@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { VoteService } from '../services/voteService';
+import { testSupabaseConnection } from '../lib/supabase';
 
 interface PriorityItem {
   id: string;
@@ -168,6 +169,12 @@ const CitizenVoteReal = () => {
     const loadInitialData = async () => {
       try {
         setIsInitialLoading(true);
+        
+        // Test de connectivité avant de procéder
+        const isConnected = await testSupabaseConnection();
+        if (!isConnected) {
+          throw new Error('Impossible de se connecter à Supabase - vérifiez la configuration');
+        }
         
         // Charger les statistiques et les votes utilisateur en parallèle
         const [voteStats, userVotesData] = await Promise.all([
