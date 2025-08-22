@@ -7,7 +7,13 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.warn('Variables d\'environnement Supabase manquantes - mode fallback activé')
 }
 
-export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null
+export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey, {
+  realtime: {
+    params: {
+      eventsPerSecond: 10
+    }
+  }
+}) : null
 
 // Types pour TypeScript
 export interface Vote {
