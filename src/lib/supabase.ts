@@ -25,43 +25,6 @@ if (!supabaseUrl || !supabaseAnonKey) {
 }
 
 
-// Fonction de test de connectivité avec retry
-export const testSupabaseConnection = async (retries = 3): Promise<boolean> => {
-  if (!supabase) {
-    console.error('❌ Client Supabase non initialisé')
-    return false
-  }
-  
-  for (let attempt = 1; attempt <= retries; attempt++) {
-    try {
-      console.log(`🔍 Test de connectivité Supabase (tentative ${attempt}/${retries})...`)
-      
-      // Test de connectivité via auth.getSession() - ne nécessite pas de permissions sur les tables
-      const { data, error } = await supabase.auth.getSession()
-      
-      if (error) {
-        console.error(`❌ Erreur tentative ${attempt}:`, error.message)
-        if (attempt === retries) {
-          console.error('Code:', error.code)
-          console.error('Détails:', error.details)
-          return false
-        }
-        // Attendre avant de réessayer
-        await new Promise(resolve => setTimeout(resolve, 1000 * attempt))
-        continue
-      }
-      
-      console.log('✅ Connectivité Supabase réussie')
-      return true
-    } catch (error) {
-      console.error(`❌ Exception tentative ${attempt}:`, error)
-      if (attempt === retries) return false
-      await new Promise(resolve => setTimeout(resolve, 1000 * attempt))
-    }
-  }
-  
-  return false
-}
 
 export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey, {
   auth: {

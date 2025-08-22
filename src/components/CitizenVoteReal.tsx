@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { VoteService } from '../services/voteService';
-import { testSupabaseConnection } from '../lib/supabase';
 
 interface PriorityItem {
   id: string;
@@ -177,19 +176,13 @@ const CitizenVoteReal = () => {
         let userVotesData: { [priorityId: string]: 'up' | 'down' } = {};
         
         try {
-          // Test de connectivité Supabase
-          const isConnected = await testSupabaseConnection();
-          if (isConnected) {
-            // Charger les statistiques et les votes utilisateur en parallèle
-            const [stats, votes] = await Promise.all([
-              VoteService.getVoteStats(),
-              VoteService.getUserVotes()
-            ]);
-            voteStats = stats;
-            userVotesData = votes;
-          } else {
-            console.warn('⚠️ Supabase non accessible, utilisation des données par défaut');
-          }
+          // Charger les statistiques et les votes utilisateur directement via le client Supabase
+          const [stats, votes] = await Promise.all([
+            VoteService.getVoteStats(),
+            VoteService.getUserVotes()
+          ]);
+          voteStats = stats;
+          userVotesData = votes;
         } catch (error) {
           console.error('❌ Erreur lors du chargement des données, utilisation du fallback:', error);
           // Continuer avec des données vides pour que l'interface reste fonctionnelle
