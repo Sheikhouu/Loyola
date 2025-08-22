@@ -166,13 +166,15 @@ const CitizenVoteReal = () => {
 
   // Charger les données initiales
   useEffect(() => {
+    let subscription: any = null;
+    
     const loadInitialData = async () => {
       try {
         setIsInitialLoading(true);
         
         // Essayer de charger les données, avec fallback en cas d'erreur
-        let voteStats = {};
-        let userVotesData = {};
+        let voteStats: { [priorityId: string]: { upvotes: number; downvotes: number } } = {};
+        let userVotesData: { [priorityId: string]: 'up' | 'down' } = {};
         
         try {
           // Test de connectivité Supabase
@@ -204,18 +206,13 @@ const CitizenVoteReal = () => {
         setUserVotes(userVotesData);
         
         // S'abonner aux changements en temps réel
-        const subscription = VoteService.subscribeToVoteChanges((newStats) => {
+        subscription = VoteService.subscribeToVoteChanges((newStats) => {
           setPriorities(prev => prev.map(priority => ({
             ...priority,
             upvotes: newStats[priority.id]?.upvotes || 0,
             downvotes: newStats[priority.id]?.downvotes || 0
           })));
         });
-        
-        // Cleanup subscription on unmount
-        return () => {
-          subscription.unsubscribe();
-        };
         
       } catch (error) {
         console.error('Erreur lors du chargement initial:', error);
@@ -225,6 +222,13 @@ const CitizenVoteReal = () => {
     };
     
     loadInitialData();
+    
+    // Cleanup subscription on unmount
+    return () => {
+      if (subscription) {
+        subscription.unsubscribe();
+      }
+    };
   }, [language]);
 
   const handleVote = async (id: string, vote: 'up' | 'down') => {
