@@ -36,11 +36,8 @@ export const testSupabaseConnection = async (retries = 3): Promise<boolean> => {
     try {
       console.log(`🔍 Test de connectivité Supabase (tentative ${attempt}/${retries})...`)
       
-      // Test simple avec une requête vers une table publique
-      const { data, error } = await supabase
-        .from('votes')
-        .select('id')
-        .limit(1)
+      // Test de connectivité via auth.getSession() - ne nécessite pas de permissions sur les tables
+      const { data, error } = await supabase.auth.getSession()
       
       if (error) {
         console.error(`❌ Erreur tentative ${attempt}:`, error.message)
