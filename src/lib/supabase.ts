@@ -3,8 +3,18 @@ import { createClient } from '@supabase/supabase-js'
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
 
+// Debug des variables d'environnement en production
+console.log('🔍 Debug variables d\'environnement Supabase:')
+console.log('VITE_SUPABASE_URL:', supabaseUrl ? `${supabaseUrl.substring(0, 30)}...` : 'undefined')
+console.log('VITE_SUPABASE_ANON_KEY:', supabaseAnonKey ? `${supabaseAnonKey.substring(0, 30)}...` : 'undefined')
+
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('Variables d\'environnement Supabase manquantes - mode fallback activé')
+  console.error('❌ Variables d\'environnement Supabase manquantes!')
+  console.error('VITE_SUPABASE_URL présent:', !!supabaseUrl)
+  console.error('VITE_SUPABASE_ANON_KEY présent:', !!supabaseAnonKey)
+  console.warn('Mode fallback activé - fonctionnalités limitées')
+} else {
+  console.log('✅ Variables d\'environnement Supabase correctement chargées')
 }
 
 export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey, {
