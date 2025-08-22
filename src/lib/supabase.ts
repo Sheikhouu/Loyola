@@ -8,6 +8,13 @@ console.log('🔍 Debug variables d\'environnement Supabase:')
 console.log('VITE_SUPABASE_URL:', supabaseUrl ? `${supabaseUrl.substring(0, 30)}...` : 'undefined')
 console.log('VITE_SUPABASE_ANON_KEY:', supabaseAnonKey ? `${supabaseAnonKey.substring(0, 30)}...` : 'undefined')
 
+// Vérification critique de la clé
+if (supabaseAnonKey) {
+  console.log('🔐 Longueur de la clé:', supabaseAnonKey.length)
+  console.log('🔐 Commence par eyJ:', supabaseAnonKey.startsWith('eyJ'))
+  console.log('🔐 Contient des points:', (supabaseAnonKey.match(/\./g) || []).length)
+}
+
 if (!supabaseUrl || !supabaseAnonKey) {
   console.error('❌ Variables d\'environnement Supabase manquantes!')
   console.error('VITE_SUPABASE_URL présent:', !!supabaseUrl)

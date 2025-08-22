@@ -170,17 +170,28 @@ const CitizenVoteReal = () => {
       try {
         setIsInitialLoading(true);
         
-        // Test de connectivité Supabase
-        const isConnected = await testSupabaseConnection();
-        if (!isConnected) {
-          throw new Error('Impossible de se connecter à Supabase');
-        }
+        // Essayer de charger les données, avec fallback en cas d'erreur
+        let voteStats = {};
+        let userVotesData = {};
         
-        // Charger les statistiques et les votes utilisateur en parallèle
-        const [voteStats, userVotesData] = await Promise.all([
-          VoteService.getVoteStats(),
-          VoteService.getUserVotes()
-        ]);
+        try {
+          // Test de connectivité Supabase
+          const isConnected = await testSupabaseConnection();
+          if (isConnected) {
+            // Charger les statistiques et les votes utilisateur en parallèle
+            const [stats, votes] = await Promise.all([
+              VoteService.getVoteStats(),
+              VoteService.getUserVotes()
+            ]);
+            voteStats = stats;
+            userVotesData = votes;
+          } else {
+            console.warn('⚠️ Supabase non accessible, utilisation des données par défaut');
+          }
+        } catch (error) {
+          console.error('❌ Erreur lors du chargement des données, utilisation du fallback:', error);
+          // Continuer avec des données vides pour que l'interface reste fonctionnelle
+        }
         
         // Construire les priorités avec les votes
         const prioritiesWithVotes = basePriorities.map(priority => ({
