@@ -73,10 +73,10 @@ export class VoteService {
       
       const { data, error } = await supabase
         .from('votes')
-        .select('*')
+        .select('id, priority_id, vote_type, fingerprint, created_at, updated_at')
         .eq('priority_id', priorityId)
         .eq('fingerprint', fp)
-        .single();
+        .maybeSingle();
         
       if (error && error.code !== 'PGRST116') throw error; // PGRST116 = no rows
       return data;
@@ -122,7 +122,7 @@ export class VoteService {
     try {
       const { data, error } = await supabase
         .from('vote_stats')
-        .select('*');
+        .select('priority_id, upvotes, downvotes, total_votes');
         
       if (error) throw error;
       
