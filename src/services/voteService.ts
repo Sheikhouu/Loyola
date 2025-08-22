@@ -120,24 +120,33 @@ export class VoteService {
     }
     
     try {
-      const { data, error } = await supabase
-        .from('vote_stats')
-        .select('*');
+      // Calculer les stats directement depuis la table votes
+      const { data: votesData, error } = await supabase
+        .from('votes')
+        .select('priority_id, vote_type');
         
-      if (error) throw error;
+      if (error) {
+        console.error('Erreur lors de la récupération des votes:', error);
+        throw error;
+      }
       
+      // Calculer les statistiques manuellement
       const stats: { [priorityId: string]: { upvotes: number; downvotes: number } } = {};
-      data?.forEach((stat: VoteStats) => {
-        stats[stat.priority_id] = {
-          upvotes: stat.upvotes,
-          downvotes: stat.downvotes
-        };
+      
+      votesData?.forEach(vote => {
+        if (!stats[vote.priority_id]) {
+          stats[vote.priority_id] = { upvotes: 0, downvotes: 0 };
+        }
+        if (vote.vote_type === 'up') {
+          stats[vote.priority_id].upvotes++;
+        } else if (vote.vote_type === 'down') {
+          stats[vote.priority_id].downvotes++;
+        }
       });
       
       return stats;
     } catch (error) {
       console.error('Erreur lors de la récupération des statistiques:', error);
-      
       return {};
     }
   }

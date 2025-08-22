@@ -25,39 +25,59 @@ if (!supabaseUrl || !supabaseAnonKey) {
 }
 
 
-// Fonction de test de connectivité
-export const testSupabaseConnection = async () => {
+// Fonction de test de connectivité avec retry
+export const testSupabaseConnection = async (retries = 3): Promise<boolean> => {
   if (!supabase) {
     console.error('❌ Client Supabase non initialisé')
     return false
   }
   
-  try {
-    console.log('🔍 Test de connectivité Supabase...')
-    
-    // Test simple avec une requête vers une table publique
-    const { data, error } = await supabase
-      .from('votes')
-      .select('count')
-      .limit(1)
-    
-    if (error) {
-      console.error('❌ Erreur de connectivité Supabase:', error)
-      console.error('Code:', error.code)
-      console.error('Message:', error.message)
-      console.error('Détails:', error.details)
-      return false
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      console.log(`🔍 Test de connectivité Supabase (tentative ${attempt}/${retries})...`)
+      
+      // Test simple avec une requête vers une table publique
+      const { data, error } = await supabase
+        .from('votes')
+        .select('id')
+        .limit(1)
+      
+      if (error) {
+        console.error(`❌ Erreur tentative ${attempt}:`, error.message)
+        if (attempt === retries) {
+          console.error('Code:', error.code)
+          console.error('Détails:', error.details)
+          return false
+        }
+        // Attendre avant de réessayer
+        await new Promise(resolve => setTimeout(resolve, 1000 * attempt))
+        continue
+      }
+      
+      console.log('✅ Connectivité Supabase réussie')
+      return true
+    } catch (error) {
+      console.error(`❌ Exception tentative ${attempt}:`, error)
+      if (attempt === retries) return false
+      await new Promise(resolve => setTimeout(resolve, 1000 * attempt))
     }
-    
-    console.log('✅ Connectivité Supabase réussie')
-    return true
-  } catch (error) {
-    console.error('❌ Exception lors du test de connectivité:', error)
-    return false
   }
+  
+  return false
 }
 
-export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : null
+export const supabase = supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    persistSession: true,
+    autoRefreshToken: true,
+    detectSessionInUrl: false
+  },
+  global: {
+    headers: {
+      'X-Client-Info': 'loyola-vote-app'
+    }
+  }
+}) : null
 
 // Types pour TypeScript
 export interface Vote {
