@@ -27,14 +27,14 @@ const DonateBannerMobile: React.FC = () => {
   };
 
   return (
-    // md:hidden => cachée sur desktop
+    // Cachée sur desktop
     <section className="md:hidden bg-white">
-      {/* Espaces resserrés autour de la bannière */}
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-8 py-3 sm:py-4">
+      {/* espaces externes resserrés */}
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-8 py-2 sm:py-3">
         <div
           className="
             mx-auto max-w-3xl
-            rounded-[24px] p-5 sm:p-6
+            rounded-[24px] p-4 sm:p-5
             border border-white/25 shadow-xl text-white
             bg-[radial-gradient(1200px_500px_at_-10%_-10%,rgba(255,255,255,0.12),transparent_40%),linear-gradient(135deg,#5e2db0_0%,#462080_45%,#2e0b63_100%)]
           "
@@ -43,11 +43,11 @@ const DonateBannerMobile: React.FC = () => {
             {t.title}
           </h2>
 
-          <p className="mt-3 text-center text-sm sm:text-base text-white/90 leading-relaxed">
+          <p className="mt-2 text-center text-sm sm:text-base text-white/90 leading-relaxed">
             {t.subtitle}
           </p>
 
-          <div className="mt-5 sm:mt-6 flex justify-center">
+          <div className="mt-4 sm:mt-5 flex justify-center">
             <a
               href={donateUrl}
               target="_blank"
@@ -58,7 +58,7 @@ const DonateBannerMobile: React.FC = () => {
                 rounded-full bg-white text-[#2e0b63]
                 px-8 py-4 sm:px-10 sm:py-5
                 text-base sm:text-lg font-bold
-                shadow-xl hover:shadow-2xl
+                shadow-lg hover:shadow-xl
                 hover:bg-violet-50 active:scale-[0.99]
                 transition
               "
@@ -68,7 +68,7 @@ const DonateBannerMobile: React.FC = () => {
             </a>
           </div>
 
-          <p className="mt-3 text-center text-xs sm:text-sm text-white/80">
+          <p className="mt-2 text-center text-xs sm:text-sm text-white/80">
             {t.note}
           </p>
         </div>
@@ -78,37 +78,39 @@ const DonateBannerMobile: React.FC = () => {
 };
 
 /* =========================
-   HERO + bannière mobile en dessous
+   HERO + bouton overlay desktop + bannière mobile
    ========================= */
 const Hero: React.FC = () => {
   const { language } = useLanguage();
 
   const heroImage = language === "fr" ? "/content_hero/1.jpg" : "/content_hero/2.jpg";
   const heroSvg   = language === "fr" ? "/svg_s/svg_fr.svg"   : "/svg_s/svg_en.svg";
-
   const donateUrl =
     "https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708";
 
   const btnPrimary =
     "relative rounded-xl font-bold leading-relaxed transition-all duration-500 " +
-    "shadow-2xl hover:shadow-[0_25px_50px_-12px_rgba(51,0,102,0.6)] " +
+    "shadow-xl hover:shadow-[0_25px_40px_-12px_rgba(51,0,102,0.5)] " +
     "border-2 border-white/20 hover:border-white/40 overflow-hidden group " +
     "bg-gradient-to-r from-[#330066] via-[#4a1a8a] to-[#330066] text-white";
 
   return (
     <>
-      {/* HERO — padding bas réduit pour coller la bannière */}
+      {/* HERO — espaces verticaux fortement réduits */}
       <section className="bg-white">
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-8 pt-8 sm:pt-10 md:pt-14 pb-4 sm:pb-5 md:pb-6">
-          <div className="relative rounded-2xl shadow-2xl overflow-hidden">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-1 pt-4 sm:pt-6 md:pt-4 pb-2 sm:pb-3 md:pb-1">
+          <div className="relative rounded-2xl shadow-xl overflow-hidden">
+            {/* Affiche (texte + portrait intégrés) */}
             <img
               src={heroImage}
               alt={language === "fr" ? "Campagne Alexandre Teo" : "Alexandre Teo Campaign"}
               className="block w-full h-auto"
             />
 
+            {/* voile léger */}
             <div className="absolute inset-0 bg-black/5 pointer-events-none z-10" />
 
+            {/* logo haut centré */}
             <img
               src={heroSvg}
               alt={language === "fr" ? "Logo Français" : "English Logo"}
@@ -117,21 +119,24 @@ const Hero: React.FC = () => {
                          h-8 sm:h-10 md:h-14 lg:h-20 w-auto drop-shadow-lg"
             />
 
-            {/* Bouton overlay uniquement desktop */}
+            {/* DESKTOP (≥ md) : bouton overlay, ancré très bas */}
             <div className="absolute inset-0 z-20 hidden md:grid grid-cols-[56%_44%] lg:grid-cols-[54%_46%]">
-              <div className="flex items-end pl-10 lg:pl-12 pb-5 lg:pb-6">
-                <a
-                  href={donateUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={language === "fr" ? "Faire un don" : "Donate"}
-                  className={`${btnPrimary} px-10 py-5 md:text-base lg:px-12 lg:py-6 lg:text-lg`}
-                >
-                  <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                  <span className="relative z-10">
-                    {language === "fr" ? "Faire un don" : "Donate"}
-                  </span>
-                </a>
+              <div className="relative">
+                {/* ajuste bottom-[4px] → [2px]/[6px] selon ton œil */}
+                <div className="absolute inset-x-0 bottom-[25px] pl-6 lg:pl-12">
+                  <a
+                    href={donateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={language === "fr" ? "Faire un don" : "Donate"}
+                    className={`${btnPrimary} px-10 py-5 md:text-base lg:px-12 lg:py-6 lg:text-lg`}
+                  >
+                    <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                    <span className="relative z-10">
+                      {language === "fr" ? "Faire un don" : "Donate"}
+                    </span>
+                  </a>
+                </div>
               </div>
               <div />
             </div>
