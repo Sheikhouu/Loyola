@@ -11,66 +11,62 @@ const DonateBannerMobile: React.FC = () => {
     "https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708";
 
   const t = {
-    title:
-      language === "fr"
-        ? "Prêt à soutenir la campagne ?"
-        : "Ready to support the campaign?",
+    title: language === "fr" ? "Soutenez la campagne" : "Support the campaign",
     subtitle:
       language === "fr"
-        ? "Chaque contribution compte. Votre don nous aide à aller à la rencontre des citoyens."
-        : "Every contribution matters. Your donation helps us reach more residents.",
+        ? "Votre don fait la différence."
+        : "Your donation makes the difference.",
     cta: language === "fr" ? "Faire un don" : "Donate",
-    note:
-      language === "fr"
-        ? "Vous serez redirigé vers le formulaire officiel d’Ensemble Montréal"
-        : "You’ll be redirected to Ensemble Montréal’s official donation form",
   };
 
   return (
-    // Cachée sur desktop
-    <section className="md:hidden bg-white">
-      {/* espaces externes resserrés */}
-      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-8 py-2 sm:py-3">
+    <section className="md:hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <div className="mx-auto max-w-screen-xl px-4 sm:px-6 py-6 sm:py-8">
         <div
           className="
-            mx-auto max-w-3xl
-            rounded-[24px] p-4 sm:p-5
-            border border-white/25 shadow-xl text-white
-            bg-[radial-gradient(1200px_500px_at_-10%_-10%,rgba(255,255,255,0.12),transparent_40%),linear-gradient(135deg,#5e2db0_0%,#462080_45%,#2e0b63_100%)]
+            w-full
+            rounded-3xl p-6 sm:p-8
+            text-center shadow-xl backdrop-blur-sm
+            bg-gradient-to-br from-white/95 via-blue-50/90 to-indigo-100/95
+            border border-blue-200/50
+            relative overflow-hidden
           "
         >
-          <h2 className="text-center text-2xl sm:text-3xl font-extrabold tracking-tight">
-            {t.title}
-          </h2>
+          {/* Effet de brillance subtil */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50"></div>
+          
+          <div className="relative z-10">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-clip-text text-transparent">
+              {t.title}
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
+              {t.subtitle}
+            </p>
 
-          <p className="mt-2 text-center text-sm sm:text-base text-white/90 leading-relaxed">
-            {t.subtitle}
-          </p>
-
-          <div className="mt-4 sm:mt-5 flex justify-center">
-            <a
-              href={donateUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={t.cta}
-              className="
-                inline-flex items-center justify-center
-                rounded-full bg-white text-[#2e0b63]
-                px-8 py-4 sm:px-10 sm:py-5
-                text-base sm:text-lg font-bold
-                shadow-lg hover:shadow-xl
-                hover:bg-violet-50 active:scale-[0.99]
-                transition
-              "
-            >
-              {t.cta}
-              <span aria-hidden className="ml-3 text-xl">→</span>
-            </a>
+            <div className="mt-6 flex justify-center">
+              <a
+                href={donateUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t.cta}
+                className="
+                  inline-flex items-center justify-center
+                  rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700
+                  hover:from-blue-700 hover:via-indigo-700 hover:to-blue-800
+                  text-white px-8 py-4 sm:px-10 sm:py-5
+                  text-base sm:text-lg font-bold tracking-wide
+                  shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-600/40
+                  hover:scale-105 active:scale-[0.98]
+                  transition-all duration-500 ease-out
+                  border border-blue-400/30 hover:border-blue-300/50
+                  relative overflow-hidden group
+                "
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></span>
+                <span className="relative z-10">{t.cta}</span>
+              </a>
+            </div>
           </div>
-
-          <p className="mt-2 text-center text-xs sm:text-sm text-white/80">
-            {t.note}
-          </p>
         </div>
       </div>
     </section>
@@ -84,23 +80,23 @@ const Hero: React.FC = () => {
   const { language } = useLanguage();
 
   const heroImage = language === "fr" ? "/content_hero/1.jpg" : "/content_hero/2.jpg";
-  const heroSvg   = language === "fr" ? "/svg_s/svg_fr.svg"   : "/svg_s/svg_en.svg";
+  const heroSvg = language === "fr" ? "/svg_s/svg_fr.svg" : "/svg_s/svg_en.svg";
   const donateUrl =
     "https://monelection.org/form/donation/ugkmSizOHBzeusgSxitvTibHrQLRlL?solliciteur_id=33708";
 
   const btnPrimary =
-    "relative rounded-xl font-bold leading-relaxed transition-all duration-500 " +
-    "shadow-xl hover:shadow-[0_25px_40px_-12px_rgba(51,0,102,0.5)] " +
-    "border-2 border-white/20 hover:border-white/40 overflow-hidden group " +
-    "bg-gradient-to-r from-[#330066] via-[#4a1a8a] to-[#330066] text-white";
+    "relative rounded-2xl font-bold leading-relaxed transition-all duration-500 ease-out " +
+    "shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-600/40 " +
+    "border border-blue-400/30 hover:border-blue-300/50 overflow-hidden group " +
+    "bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:via-indigo-700 hover:to-blue-800 " +
+    "text-white hover:scale-105 active:scale-[0.98] tracking-wide";
 
   return (
     <>
-      {/* HERO — espaces verticaux fortement réduits */}
+      {/* HERO — padding minimal sur mobile */}
       <section className="bg-white">
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 md:px-1 pt-4 sm:pt-6 md:pt-4 pb-2 sm:pb-3 md:pb-1">
+        <div className="mx-auto max-w-screen-xl px-0 sm:px-2 md:px-4 pt-1 sm:pt-2 md:pt-4 pb-1 sm:pb-2 md:pb-3">
           <div className="relative rounded-2xl shadow-xl overflow-hidden">
-            {/* Affiche (texte + portrait intégrés) */}
             <img
               src={heroImage}
               alt={language === "fr" ? "Campagne Alexandre Teo" : "Alexandre Teo Campaign"}
@@ -119,17 +115,16 @@ const Hero: React.FC = () => {
                          h-8 sm:h-10 md:h-14 lg:h-20 w-auto drop-shadow-lg"
             />
 
-            {/* DESKTOP (≥ md) : bouton overlay, ancré très bas */}
+            {/* DESKTOP (≥ md) : bouton overlay, ancré bas */}
             <div className="absolute inset-0 z-20 hidden md:grid grid-cols-[56%_44%] lg:grid-cols-[54%_46%]">
               <div className="relative">
-                {/* ajuste bottom-[4px] → [2px]/[6px] selon ton œil */}
                 <div className="absolute inset-x-0 bottom-[25px] pl-6 lg:pl-12">
                   <a
                     href={donateUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={language === "fr" ? "Faire un don" : "Donate"}
-                    className={`${btnPrimary} px-10 py-5 md:text-base lg:px-12 lg:py-6 lg:text-lg`}
+                    className={`${btnPrimary} px-8 py-4 md:text-base lg:px-10 lg:py-5 lg:text-lg`}
                   >
                     <span className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     <span className="relative z-10">
@@ -144,7 +139,7 @@ const Hero: React.FC = () => {
         </div>
       </section>
 
-      {/* BANNIÈRE DON — mobile/tablette seulement, espacements resserrés */}
+      {/* Bannière DON — mobile/tablette seulement */}
       <DonateBannerMobile />
     </>
   );
