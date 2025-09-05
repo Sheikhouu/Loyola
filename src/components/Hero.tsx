@@ -20,7 +20,7 @@ const DonateBannerMobile: React.FC = () => {
   };
 
   return (
-    <section className="md:hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <section className="md:hidden bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 pt-20">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 py-6 sm:py-8">
         <div
           className="
@@ -93,8 +93,8 @@ const Hero: React.FC = () => {
 
   return (
     <>
-      {/* HERO — padding minimal sur mobile */}
-      <section className="bg-white">
+      {/* HERO — caché sur mobile, visible desktop uniquement */}
+      <section className="bg-white hidden md:block">
         <div className="mx-auto max-w-screen-xl px-0 sm:px-2 md:px-4 pt-1 sm:pt-2 md:pt-4 pb-1 sm:pb-2 md:pb-3">
           <div className="relative rounded-2xl shadow-xl overflow-hidden">
             <img

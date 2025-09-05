@@ -14,14 +14,8 @@ const Header = () => {
       const scrollY = window.scrollY;
       
       if (window.innerWidth < 768) {
-        // Sur mobile, le header apparaît après la section CTA
-        const ctaSection = document.getElementById('cta-section');
-        if (ctaSection) {
-          const ctaSectionBottom = ctaSection.offsetTop + ctaSection.offsetHeight;
-          setIsVisible(scrollY > ctaSectionBottom - 50);
-        } else {
-          setIsVisible(false); // Caché par défaut si pas de section CTA
-        }
+        // Sur mobile, le header est toujours visible car pas de hero
+        setIsVisible(true);
       } else {
         // Sur desktop/tablette, détecte si on a dépassé la hauteur de l'écran (section hero)
         const heroHeight = window.innerHeight;
